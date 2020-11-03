@@ -52,6 +52,8 @@ public class CashbookController {
 		model.addAttribute("sumIn", sumIn);
 		model.addAttribute("sumOut", sumOut);
 		
+		// 페이지 타입 - 1 = home, 2 = cash, 3 = notice
+		model.addAttribute("type", 2);
 		return "cashbookByMonth";
 	}
 }

@@ -1,44 +1,50 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <style type="text/css">
 	.sunday {color : #FF0000;}
 </style>
 </head>
 <body>
+<!-- ë°°ê²½ -->
 <div class="container-fluit" style="position:absolute; top:2%; left:5%; width:90%">
 	<img src="/resources/image/note.jpg" width="100%" height="1000px">
 </div>
+<!-- ë©”ë‰´ -->
+<div class="container-fluit" style="position:absolute; top:20%; left:8%; width:90%">
+	<jsp:include page="/WEB-INF/view/include/menu.jsp"></jsp:include>
+</div>
+<!-- ë³¸ë¬¸ -->
 <div class="container-fluit" style="width:70%; position:relative; margin-top:10%; margin-left:15%">
 	<h1><br></h1>
-	<!-- ´ÙÀÌ¾î¸® -->
 	<div>
-		ÀÌ¹ø´Ş ¼öÀÔ ÇÕ°è : ${sumIn }
+		ì´ë²ˆë‹¬ ìˆ˜ì… í•©ê³„ : ${sumIn }
 	</div>
 	<div>
-		ÀÌ¹ø´Ş ÁöÃâ ÇÕ°è : ${sumOut }
+		ì´ë²ˆë‹¬ ì§€ì¶œ í•©ê³„ : ${sumOut }
 	</div>
 	<h3>
-		<a href="/cashbookByMonth?currentYear=${currentYear}&currentMonth=${currentMonth-1}">[ÀÌÀü´Ş]</a>
-		${currentYear}³â ${currentMonth} ¿ù
-		<a href="/cashbookByMonth?currentYear=${currentYear}&currentMonth=${currentMonth+1}">[´ÙÀ½´Ş]</a>
+		<a href="/cashbookByMonth?currentYear=${currentYear}&currentMonth=${currentMonth-1}">[ì´ì „ë‹¬]</a>
+		${currentYear}ë…„ ${currentMonth} ì›”
+		<a href="/cashbookByMonth?currentYear=${currentYear}&currentMonth=${currentMonth+1}">[ë‹¤ìŒë‹¬]</a>
 	</h3>
 	
 	<div>
 		<table border="1" width="100%">
 			<thead>
 				<tr>
-					<th>ÀÏ</th>
-					<th>¿ù</th>
-					<th>È­</th>
-					<th>¼ö</th>
-					<th>¸ñ</th>
-					<th>±İ</th>
-					<th>Åä</th>
+					<th>ì¼</th>
+					<th>ì›”</th>
+					<th>í™”</th>
+					<th>ìˆ˜</th>
+					<th>ëª©</th>
+					<th>ê¸ˆ</th>
+					<th>í† </th>
 				</tr>
 			</thead>
 			<tbody>

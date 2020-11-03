@@ -13,11 +13,14 @@ import kr.co.gdu.cash.service.IndexService;
 public class IndexController {
 	@Autowired private IndexService indexService; 
 	
-	@GetMapping(value="/index")
+	@GetMapping(value={"/","/index"})
 	public String index(Model model) {
 		Map<String, Object> map = indexService.getNoticeAndInOutList();
 		model.addAttribute("noticeList", map.get("noticeList"));
 		model.addAttribute("inOutList", map.get("inOutList"));
+
+		// 페이지 타입 - 1 = home, 2 = cash, 3 = notice
+		model.addAttribute("type", 1);
 		return "index";
 	}
 }

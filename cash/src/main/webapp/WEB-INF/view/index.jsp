@@ -5,12 +5,19 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
+<!-- 배경 -->
 <div class="container-fluit" style="position:absolute; top:2%; left:5%; width:90%">
 	<img src="/resources/image/note.jpg" width="100%" height="1000px">
 </div>
+<!-- 메뉴 -->
+<div class="container-fluit" style="position:absolute; top:20%; left:8%; width:90%">
+	<jsp:include page="/WEB-INF/view/include/menu.jsp"></jsp:include>
+</div>
+<!-- 본문 -->
 <div class="container-fluit" style="width:70%; position:relative; margin-top:10%; margin-left:15%">
 	<h1><br></h1>
 	<!-- 공지사항 -->
