@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.gdu.cash.mapper.CashbookMapper">
+	<select id="selectCashInOutList" resultType="java.util.Map">
+		SELECT 
+		   YEAR(cashbook_date) yyyy, MONTH(cashbook_date) mm
+		   ,SUM((case when cashbook_kind = '수입' then cashbook_price ELSE 0 END)) AS "수입"
+		   ,SUM((case when cashbook_kind = '지출' then cashbook_price ELSE 0 END)) AS "지출"
+		   ,SUM((case when cashbook_kind = '수입' then cashbook_price ELSE 0 END)-
+			(case when cashbook_kind = '지출' then cashbook_price ELSE '' END)) AS "합계"
+		FROM cashbook
+		GROUP BY mm
+		ORDER BY mm DESC LIMIT 3
+	</select>
+	<select id="selectSumCashbookPriceByInOut" parameterType="java.util.Map" resultType="int">
+		SELECT NVL(SUM(cashbook_price), 0)
+		FROM cashbook
+		WHERE cashbook_kind = #{cashbookKind}
+		AND YEAR(cashbook_date) = #{year}
+		AND MONTH(cashbook_date) = #{month}
+	</select>
+</mapper>
