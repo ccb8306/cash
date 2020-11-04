@@ -10,10 +10,10 @@
 		}
 			
 		$("#homeBtn").click(function() {
-			$(location).attr('href', 'index')
+			$(location).attr('href', '/')
 		});
 		$("#cashBtn").click(function() {
-			$(location).attr('href', 'cashbookByMonth')
+			$(location).attr('href', '/cashbookByMonth')
 		});
 		$("#noticeBtn").click(function() {
 		});

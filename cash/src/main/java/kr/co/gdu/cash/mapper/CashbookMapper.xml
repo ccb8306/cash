@@ -3,6 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.co.gdu.cash.mapper.CashbookMapper">
+	<!-- 최근 3개월 총 수입,지출 -->
 	<select id="selectCashInOutList" resultType="java.util.Map">
 		SELECT 
 		   YEAR(cashbook_date) yyyy, MONTH(cashbook_date) mm
@@ -14,11 +15,57 @@
 		GROUP BY mm
 		ORDER BY mm DESC LIMIT 3
 	</select>
+	<!-- 월별 총 수입,지출 -->
 	<select id="selectSumCashbookPriceByInOut" parameterType="java.util.Map" resultType="int">
 		SELECT NVL(SUM(cashbook_price), 0)
 		FROM cashbook
 		WHERE cashbook_kind = #{cashbookKind}
-		AND YEAR(cashbook_date) = #{year}
-		AND MONTH(cashbook_date) = #{month}
+		AND YEAR(cashbook_date) = #{currentYear}
+		AND MONTH(cashbook_date) = #{currentMonth}
 	</select>
+	<!-- 해당 월의 모든 수입, 지출 내역 -->
+	<select id="selectCashListByMonth" parameterType="java.util.Map" resultType="java.util.Map">
+		SELECT 
+			cashbook_kind cashbookKind, 
+			SUM(cashbook_price) cashbookPrice,
+			day(cashbook_date) day
+		FROM cashbook
+		WHERE YEAR(cashbook_date) = #{currentYear}
+		AND MONTH(cashbook_date) = #{currentMonth}
+		GROUP BY day(cashbook_date), cashbookKind
+	</select>
+	<!-- 해당 일의 모든 수입, 지출 내역 -->
+	<select  id="selectCashListByDay" parameterType="java.util.Map" resultType="kr.co.gdu.cash.vo.Cashbook">
+		SELECT 
+			cashbook_id cashbookId, 
+			cashbook_kind cashbookKind, 
+			category_name categoryName, 
+			cashbook_price cashbookPrice, 
+			cashbook_content cashbookContent
+		FROM cashbook
+		WHERE YEAR(cashbook_date)= #{currentYear}
+		AND MONTH(cashbook_date)= #{currentMonth}
+		AND DAY(cashbook_date)= #{currentDay}
+	</select>
+	
+	<!-- 해당 일에 새로운 내역 추가 -->
+	<insert id="insertCashbook" parameterType="kr.co.gdu.cash.vo.Cashbook">
+		INSERT INTO cashbook(
+			category_name, 
+			cashbook_content, 
+			cashbook_kind, 
+			cashbook_price, 
+			cashbook_date, 
+			create_date, 
+			update_date
+		)VALUES(
+			#{categoryName},
+			#{cashbookContent},
+			#{cashbookKind},
+			#{cashbookPrice},
+			#{cashbookDate},
+			NOW(),
+			NOW()
+		)
+	</insert>
 </mapper>

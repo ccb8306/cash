@@ -6,9 +6,18 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<style type="text/css">
-	.sunday {color : #FF0000;}
-</style>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script>
+	$(document).ready(function(){
+		for(let i = 1; i <= ${lastDay+(firstDayOfWeek-1)}; i++){
+			if(i%7 == 1){
+				$('#day' + i).css('color', '#FF0000');
+			}else if(i%7 == 0){
+				$('#day' + i).css('color', '#0000FF');
+			}
+		}
+	});
+</script>
 </head>
 <body>
 <!-- 배경 -->
@@ -35,16 +44,16 @@
 	</h3>
 	
 	<div>
-		<table border="1" width="100%">
+		<table class="table">
 			<thead>
 				<tr>
-					<th>일</th>
+					<th style="color:#FF0000">일</th>
 					<th>월</th>
 					<th>화</th>
 					<th>수</th>
 					<th>목</th>
 					<th>금</th>
-					<th>토</th>
+					<th style="color:#0000FF">토</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -54,12 +63,16 @@
 							<td>&nbsp;</td>
 						</c:if>
 						<c:if test="${i-(firstDayOfWeek-1) > 0}">
-							<c:if test="${i%7 == 1}">
-								<td class="sunday">${i-(firstDayOfWeek-1)}</td>
-							</c:if>
-							<c:if test="${i%7 !=1 }">
-								<td>${i-(firstDayOfWeek-1)}</td>
-							</c:if>
+							<td style="width:14%;">
+								<div id="day${i}">
+									<a href="/cashbookByDay?currentYear=${currentYear}&currentMonth=${currentMonth}&currentDay=${i-(firstDayOfWeek-1)}" style="color:black">${i-(firstDayOfWeek-1)}</a>
+								</div>
+								<c:forEach var="c" items="${cashList}">
+									<c:if test="${i-(firstDayOfWeek-1) == c.day}">
+										<div>[${c.cashbookKind }] : ${c.cashbookPrice }</div>
+									</c:if>
+								</c:forEach>
+							</td>
 						</c:if>
 						<c:if test="${i%7 == 0}">
 							</tr><tr>
