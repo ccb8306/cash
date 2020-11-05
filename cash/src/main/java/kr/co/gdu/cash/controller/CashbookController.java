@@ -21,14 +21,14 @@ public class CashbookController {
 	@Autowired private CashbookService cashbookService;
 	@Autowired private CategoryService CategoryService;
 	
-	@PostMapping("/addCashbook")
+	@PostMapping("/admin/addCashbook")
 	public String addCashbook(Cashbook cashbook) {
 		
 		cashbookService.addCashbook(cashbook);
-		return "redirect:/cashbookByMonth";
+		return "redirect:/admin/cashbookByMonth";
 	}
 	
-	@GetMapping(value="/cashbookByMonth")
+	@GetMapping(value="/admin/cashbookByMonth")
 	public String cashbookByMonth(Model model,
 			@RequestParam(name = "currentYear", defaultValue = "-1") int currentYear,
 			@RequestParam(name = "currentMonth", defaultValue = "-1") int currentMonth) { 
@@ -81,7 +81,7 @@ public class CashbookController {
 		return "cashbookByMonth";
 	}
 	
-	@GetMapping(value="/cashbookByDay")
+	@GetMapping(value="/admin/cashbookByDay")
 	public String cashbookByDay(Model model,
 			@RequestParam(name = "currentYear", required = true) int currentYear,
 			@RequestParam(name = "currentMonth", required = true) int currentMonth,

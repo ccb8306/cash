@@ -7,18 +7,19 @@
 <title>Insert title here</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<link href="/resources/cash.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 <!-- 배경 -->
-<div class="container-fluit" style="position:absolute; top:2%; left:5%; width:90%">
-	<img src="/resources/image/note.jpg" width="100%" height="1000px">
+<div class="container-fluit main-bg">
+	<img src="/resources/image/note.jpg" class="bg-img">
 </div>
 <!-- 메뉴 -->
-<div class="container-fluit" style="position:absolute; top:20%; left:8%; width:90%">
+<div class="container-fluit menu-bar">
 	<jsp:include page="/WEB-INF/view/include/menu.jsp"></jsp:include>
 </div>
 <!-- 본문 -->
-<div class="container-fluit" style="width:70%; position:relative; margin-top:10%; margin-left:15%">
+<div class="container-fluit main-content">
 	<h1><br></h1>
 	<!-- 공지사항 -->
 	<div>
@@ -35,7 +36,7 @@
 				<c:forEach var="n" items="${noticeList}">
 					<tr>
 						<td>${n.noticeId }</td>
-						<td>${n.noticeTitle }</td>
+						<td><a href="/admin/noticeOne?noticeId=${n.noticeId }">${n.noticeTitle }</a></td>
 						<td>${n.noticeDate }</td>
 					</tr>
 				</c:forEach>
@@ -49,27 +50,29 @@
 	<div class="row">	
 		<c:forEach var="io" items="${inOutList}">
 			<div class="col-sm-4" style="margin:auto">
-				<table class="table" style="background:#DDDDDD;">
-					<thead class="thead-dark">
+				<table class="table" style="background:white;">
+					<thead style="background:#FFC1C1">
 						<tr>
 							<th style="text-align:center" colspan="2">${io["yyyy"]}년</th>
 						</tr>
 						<tr>
-							<th style="text-align:center" colspan="2"><a href="/cashbookByMonth?currentYear=${io['yyyy']}&currentMonth=${io['mm']}">${io["mm"]}월</a></th>
+							<th style="text-align:center" colspan="2"><a href="/admin/cashbookByMonth?currentYear=${io['yyyy']}&currentMonth=${io['mm']}">${io["mm"]}월</a></th>
 						</tr>
 					</thead>
-					<tr>
-						<th>수입</th>
-						<td>${io["수입"]}</td>
-					</tr>
-					<tr>
-						<th>지출</th>
-						<td>${io["지출"]}</td>
-					</tr>
-					<tr>
-						<th>합계</th>
-						<td>${io["합계"]}</td>
-					</tr>
+					<tbody style="background:#FFFAF0;">
+						<tr>
+							<th>수입</th>
+							<td>${io["수입"]}</td>
+						</tr>
+						<tr>
+							<th>지출</th>
+							<td>${io["지출"]}</td>
+						</tr>
+						<tr>
+							<th>합계</th>
+							<td>${io["합계"]}</td>
+						</tr>
+					</tbody>
 				</table>
 			</div>
 		</c:forEach>

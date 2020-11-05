@@ -10,12 +10,16 @@
 		}
 			
 		$("#homeBtn").click(function() {
-			$(location).attr('href', '/')
+			$(location).attr('href', '/admin/index')
 		});
 		$("#cashBtn").click(function() {
-			$(location).attr('href', '/cashbookByMonth')
+			$(location).attr('href', '/admin/cashbookByMonth')
 		});
 		$("#noticeBtn").click(function() {
+			$(location).attr('href', '/admin/noticeList')
+		});
+		$("#loginoutBtn").click(function() {
+			$(location).attr('href', '/admin/logout')
 		});
 	});
 </script>
@@ -30,5 +34,8 @@
 	
 	<div id="noticeBtn" style="background-color:#FF9966; width:5%; height:20%; margin-top:10px">
 		공<br>지<br>사<br>항
+	</div>
+	<div id="loginoutBtn" style="background-color:#98FB98; width:5%; height:20%; margin-top:10px">
+		로<br>그<br>아<br>읏
 	</div>
 </div>

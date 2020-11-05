@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<link href="/resources/cash.css" rel="stylesheet" type="text/css" />
 <script>
 	$(document).ready(function(){
 		for(let i = 1; i <= ${lastDay+(firstDayOfWeek-1)}; i++){
@@ -21,15 +22,15 @@
 </head>
 <body>
 <!-- 배경 -->
-<div class="container-fluit" style="position:absolute; top:2%; left:5%; width:90%">
-	<img src="/resources/image/note.jpg" width="100%" height="1000px">
+<div class="container-fluit main-bg">
+	<img src="/resources/image/note.jpg" class="bg-img">
 </div>
 <!-- 메뉴 -->
-<div class="container-fluit" style="position:absolute; top:20%; left:8%; width:90%">
+<div class="container-fluit menu-bar">
 	<jsp:include page="/WEB-INF/view/include/menu.jsp"></jsp:include>
 </div>
 <!-- 본문 -->
-<div class="container-fluit" style="width:70%; position:relative; margin-top:10%; margin-left:15%">
+<div class="container-fluit main-content">
 	<h1><br></h1>
 	<div>
 		이번달 수입 합계 : ${sumIn }
@@ -38,9 +39,9 @@
 		이번달 지출 합계 : ${sumOut }
 	</div>
 	<h3>
-		<a href="/cashbookByMonth?currentYear=${currentYear}&currentMonth=${currentMonth-1}">[이전달]</a>
+		<a href="/admin/cashbookByMonth?currentYear=${currentYear}&currentMonth=${currentMonth-1}">[이전달]</a>
 		${currentYear}년 ${currentMonth} 월
-		<a href="/cashbookByMonth?currentYear=${currentYear}&currentMonth=${currentMonth+1}">[다음달]</a>
+		<a href="/admin/cashbookByMonth?currentYear=${currentYear}&currentMonth=${currentMonth+1}">[다음달]</a>
 	</h3>
 	
 	<div>
@@ -64,12 +65,12 @@
 						</c:if>
 						<c:if test="${i-(firstDayOfWeek-1) > 0}">
 							<td style="width:14%;">
-								<div id="day${i}">
-									<a href="/cashbookByDay?currentYear=${currentYear}&currentMonth=${currentMonth}&currentDay=${i-(firstDayOfWeek-1)}" style="color:black">${i-(firstDayOfWeek-1)}</a>
+								<div>
+									<a id="day${i}" href="/admin/cashbookByDay?currentYear=${currentYear}&currentMonth=${currentMonth}&currentDay=${i-(firstDayOfWeek-1)}" style="color:black">${i-(firstDayOfWeek-1)}</a>
 								</div>
 								<c:forEach var="c" items="${cashList}">
 									<c:if test="${i-(firstDayOfWeek-1) == c.day}">
-										<div>[${c.cashbookKind }] : ${c.cashbookPrice }</div>
+										<div>${c.cashbookKind } : ${c.cashbookPrice }</div>
 									</c:if>
 								</c:forEach>
 							</td>

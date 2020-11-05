@@ -12,15 +12,10 @@ import kr.co.gdu.cash.vo.*;
 @Service
 @Transactional
 public class IndexService {
-	@Autowired private NoticeMapper noticeMapper;
 	@Autowired private CashbookMapper cashbookMapper;
 	
-	public Map<String, Object> getNoticeAndInOutList() {
-		List<Notice> noticeList = noticeMapper.selectLatestNoiceList();
+	public List<Map<String, Object>> getInOutList() {
 		List<Map<String,Object>> inOutList = cashbookMapper.selectCashInOutList();
-		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("noticeList", noticeList);
-		map.put("inOutList", inOutList);
-		return map;
+		return inOutList;
 	}
 }
