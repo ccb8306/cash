@@ -68,4 +68,31 @@
 			NOW()
 		)
 	</insert>
+	
+	<!-- 내역 한개 삭제 -->
+	<delete id="deleteCashbook" parameterType="int">
+		DELETE FROM cashbook WHERE cashbook_id = #{cashbookId}
+	</delete>
+	
+	<!-- 내역 한개 불러오기(상세보기) -->
+	<select  id="selectCashbookOne" parameterType="int" resultType="kr.co.gdu.cash.vo.Cashbook">
+		SELECT 
+			cashbook_id cashbookId, 
+			cashbook_kind cashbookKind, 
+			category_name categoryName, 
+			cashbook_price cashbookPrice, 
+			cashbook_content cashbookContent
+		FROM cashbook
+		WHERE cashbook_id=#{cashbookId}
+	</select>
+	<!-- 내역 한개 수정 -->
+	<update id="updateCashbook" parameterType="kr.co.gdu.cash.vo.Cashbook">
+		UPDATE cashbook SET 
+			cashbook_kind = #{cashbookKind},
+			category_name = #{categoryName},
+			cashbook_price = #{cashbookPrice}, 
+			cashbook_content = #{cashbookContent},
+			update_date = NOW()
+		WHERE cashbook_id = #{cashbookId}
+	</update>
 </mapper>

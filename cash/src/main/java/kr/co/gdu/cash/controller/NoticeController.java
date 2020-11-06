@@ -22,7 +22,7 @@ public class NoticeController {
 	// 공지사항 목록
 	@GetMapping("/admin/noticeList")
 	public String getNoticeList(Model model,
-								@RequestParam(value="currentPage", defaultValue = "1") int currentPage){
+								@RequestParam(name="currentPage", defaultValue = "1") int currentPage){
 		
 		// 페이지
 		int rowPage = 10;
@@ -60,7 +60,7 @@ public class NoticeController {
 	// 공지사항 상세보기
 	@GetMapping("/admin/noticeOne")
 	public String noticeOne(Model model,
-			@RequestParam(value="noticeId", required = true) int noticeId){
+			@RequestParam(name="noticeId", required = true) int noticeId){
 		
 		Notice notice = noticeService.getNoticeOne(noticeId);
 		model.addAttribute("notice", notice);
@@ -71,7 +71,7 @@ public class NoticeController {
 	// 공지사항 삭제
 	@GetMapping("/admin/removeNotice")
 	public String removeNotice(Model model,
-			@RequestParam(value="noticeId", required = true) int noticeId) {
+			@RequestParam(name="noticeId", required = true) int noticeId) {
 		
 		noticeService.removeNotie(noticeId);
 		model.addAttribute("type", 3);
@@ -81,7 +81,7 @@ public class NoticeController {
 	// 공지사항 수정 폼
 	@GetMapping("/admin/modifyNotice")
 	public String modifyNotice(Model model, 
-			@RequestParam(value="noticeId", required = true) int noticeId) {
+			@RequestParam(name="noticeId", required = true) int noticeId) {
 		
 		Notice notice = noticeService.getNoticeOne(noticeId);
 		model.addAttribute("notice", notice);

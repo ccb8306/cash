@@ -37,7 +37,9 @@
 <div class="container-fluit main-content">
 	<h1><br></h1>
 	<div>
+		<a href="/admin/cashbookByDay?target=pre&currentYear=${currentYear }&currentMonth=${currentMonth }&currentDay=${currentDay }">이전</a>
 		${currentYear }년 ${currentMonth }월 ${currentDay }일
+		<a href="/admin/cashbookByDay?target=next&currentYear=${currentYear }&currentMonth=${currentMonth }&currentDay=${currentDay }">다음</a>		
 	</div>
 	<div>
 		<table class="table">
@@ -60,8 +62,8 @@
 						<td>${c.categoryName}</td>
 						<td>${c.cashbookPrice}</td>
 						<td>${c.cashbookContent}</td>
-						<td><a href="">수정</a></td>
-						<td><a href="">삭제</a></td>
+						<td><a class="btn btn-outline-success" href="/admin/modifyCashbook?cashbookId=${c.cashbookId}&currentYear=${currentYear }&currentMonth=${currentMonth }&currentDay=${currentDay }">수정</a></td>
+						<td><a class="btn btn-outline-danger" href="/admin/removeCashbook?cashbookId=${c.cashbookId}&currentYear=${currentYear }&currentMonth=${currentMonth }&currentDay=${currentDay }">삭제</a></td>
 					</tr>
 				</c:forEach>
 			</tbody>

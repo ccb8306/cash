@@ -14,4 +14,8 @@ public interface CashbookMapper {
 	List<Cashbook> selectCashListByDay(Map<String, Object> map);
 	
 	int insertCashbook(Cashbook cashbook);
+	int deleteCashbook(int cashbookId);
+	
+	Cashbook selectCashbookOne(int cashbookId);
+	int updateCashbook(Cashbook cashbook);
 }
