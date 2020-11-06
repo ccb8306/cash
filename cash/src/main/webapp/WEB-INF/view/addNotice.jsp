@@ -27,7 +27,7 @@
 <body>
 <!-- 배경 -->
 <div class="container-fluit main-bg">
-	<img src="/resources/image/note.jpg" width="100%" height="110%">
+	<img src="/resources/image/note.jpg" class="bg-img">
 </div>
 <!-- 메뉴 -->
 <div class="container-fluit menu-bar">
@@ -35,9 +35,9 @@
 </div>
 <!-- 본문 -->
 <div class="container-fluit main-content">
-	<h1><br></h1>
+	<br>
 	<!-- 공지사항 추가 폼 -->
-	<div><h2>공지사항 작성</h2></div>
+	<div class="pastel-cloud-300"><h3>공지사항 수정</h3></div>
 	<form id="addNoticeForm" method="post" action="addNotice">
 		<table class="table">
 			<tr>
@@ -46,7 +46,7 @@
 			</tr>
 			<tr>
 				<th>내용</th>
-				<td>내용 : <textarea class="form-control btn-block" style="width:100%;" name="noticeContent" id="noticeContent" rows="12" cols="100"></textarea></td>
+				<td>내용 : <textarea class="form-control btn-block w100p" name="noticeContent" id="noticeContent" rows="12" cols="100"></textarea></td>
 			</tr>
 		</table>
 		<button class="btn btn-outline-primary" type="button" id="addNoticeBtn">작성</button>

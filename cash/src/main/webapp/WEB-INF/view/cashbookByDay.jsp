@@ -36,10 +36,14 @@
 <!-- 본문 -->
 <div class="container-fluit main-content">
 	<h1><br></h1>
-	<div>
-		<a href="/admin/cashbookByDay?target=pre&currentYear=${currentYear }&currentMonth=${currentMonth }&currentDay=${currentDay }">이전</a>
-		${currentYear }년 ${currentMonth }월 ${currentDay }일
-		<a href="/admin/cashbookByDay?target=next&currentYear=${currentYear }&currentMonth=${currentMonth }&currentDay=${currentDay }">다음</a>		
+	<div style="width:300px; margin:0 auto">
+		<div class="pastel-peach-300">
+			<div class="row">
+			<div class=""><h3><a class="color-red" href="/admin/cashbookByDay?target=pre&currentYear=${currentYear }&currentMonth=${currentMonth }&currentDay=${currentDay }">[-]</a></h3></div>
+			<div class="ml-a"><h3>&nbsp; ${currentYear }년 ${currentMonth }월 ${currentDay }일 &nbsp;</h3></div>
+			<div class="ml-a"><h3><a class="color-red" href="/admin/cashbookByDay?target=next&currentYear=${currentYear }&currentMonth=${currentMonth }&currentDay=${currentDay }">[+]</a></h3></div>
+			</div>
+		</div>
 	</div>
 	<div>
 		<table class="table">
@@ -73,12 +77,8 @@
 	<div style="margin-top:50px">
 		<form id="addCashbookForm" method="post" action="/admin/addCashbook">
 			<input type="hidden" name="cashbookDate" value="${currentYear }-${currentMonth }-${currentDay }">
+			<div class="pastel-peach-200"><h5>내역 추가하기</h5></div>
 			<table class="table table-borderless">
-				<thead class="thead-light">
-					<tr>
-						<th colspan="4">내역 추가하기</th>
-					</tr>
-				</thead>
 				<tr>
 					<td>
 						종류 : 
@@ -104,7 +104,7 @@
 				</tr>
 				<tr>
 					<td colspan="3">내용 : <textarea class="form-control" style="width:100%;" name="cashbookContent" id="cashbookContent" rows="3" cols="100"></textarea></td>
-					<td><button class="btn btn-outline-warning"  id="addCashbookBtn">추가</button></td>
+					<td><br><button style="width:100px; height:50px" class="btn btn-outline-warning"  id="addCashbookBtn">추가</button></td>
 				</tr>
 			</table>
 		</form>

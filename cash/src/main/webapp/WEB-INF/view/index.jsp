@@ -20,10 +20,10 @@
 </div>
 <!-- 본문 -->
 <div class="container-fluit main-content">
-	<h1><br></h1>
 	<!-- 공지사항 -->
+	<br>
 	<div>
-		<h2>공지사항</h2>
+		<div class="pastel-yellow-200"><h2><a class="color-black" href="/admin/noticeList">공지사항</a></h2></div>
 		<table class="table">
 			<thead>
 				<tr>
@@ -44,13 +44,15 @@
 		</table>
 	</div>
 	<!-- 최근 3개월 수익,지출 -->
-	<div style="margin-top:50px; text-align:center">
-		<h2>최근 3개월</h2>
+	<div style="width:250px; margin:0 auto">
+		<div class="mt-50 align-center">
+			<h2 class="pastel-yellow-250">최근 3개월</h2>
+		</div>
 	</div>
 	<div class="row">	
 		<c:forEach var="io" items="${inOutList}">
-			<div class="col-sm-4" style="margin:auto">
-				<table class="table" style="background:white;">
+			<div class="col-sm-4 ma">
+				<table class="table bg-white">
 					<thead style="background:#FFC1C1">
 						<tr>
 							<th style="text-align:center" colspan="2">${io["yyyy"]}년</th>

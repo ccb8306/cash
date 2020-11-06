@@ -32,18 +32,24 @@
 <!-- 본문 -->
 <div class="container-fluit main-content">
 	<h1><br></h1>
-	<div>
-		이번달 수입 합계 : ${sumIn }
-	</div>
-	<div>
-		이번달 지출 합계 : ${sumOut }
-	</div>
-	<h3>
-		<a href="/admin/cashbookByMonth?currentYear=${currentYear}&currentMonth=${currentMonth-1}">[이전달]</a>
-		${currentYear}년 ${currentMonth} 월
-		<a href="/admin/cashbookByMonth?currentYear=${currentYear}&currentMonth=${currentMonth+1}">[다음달]</a>
-	</h3>
 	
+	<div style="width:250px; margin:0 auto">
+		<div class="ml-a pastel-peach-250">
+			<div class="row">
+			<div class=""><h3><a class="color-red" href="/admin/cashbookByMonth?currentYear=${currentYear}&currentMonth=${currentMonth-1}">[-]</a></h3></div>
+			<div class="ml-a"><h3>&nbsp; ${currentYear}년 ${currentMonth} 월 &nbsp;</h3></div>
+			<div class="ml-a"><h3><a class="color-red" href="/admin/cashbookByMonth?currentYear=${currentYear}&currentMonth=${currentMonth+1}">[+]</a></h3></div>
+			</div>
+		</div>
+	</div>
+	<div class="pastel-melon-250">
+		<div>
+			이번달 수입 합계 : ${sumIn }
+		</div>
+		<div>
+			이번달 지출 합계 : ${sumOut }
+		</div>
+	</div>
 	<div>
 		<table class="table">
 			<thead>

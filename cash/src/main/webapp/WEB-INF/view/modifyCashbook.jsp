@@ -35,20 +35,15 @@
 </div>
 <!-- 본문 -->
 <div class="container-fluit main-content">
-	<h1><br></h1>
-	<!-- 내용 수정 -->
-	<div style="margin-top:50px">
+	<!-- 내용 수정 --><br>
+	<div>
 		<form id="modifyCashbookForm" method="post" action="/admin/modifyCashbook">
 			<input type="hidden" name="currentYear" value="${currentYear}">
 			<input type="hidden" name="currentMonth" value="${currentMonth}">
 			<input type="hidden" name="currentDay" value="${currentDay}">
 			<input type="hidden" name="cashbookId" value="${cashbook.cashbookId}">
+			<div class="pastel-peach-250"><h4>내역 수정하기</h4></div>
 			<table class="table table-borderless">
-				<thead class="thead-light">
-					<tr>
-						<th colspan="4">내역 수정하기</th>
-					</tr>
-				</thead>
 				<tr>
 					<td>
 						종류 : 
@@ -87,7 +82,7 @@
 				</tr>
 				<tr>
 					<td colspan="3">내용 : <textarea class="form-control" style="width:100%;" name="cashbookContent" id="cashbookContent" rows="3" cols="100">${cashbook.cashbookContent }</textarea></td>
-					<td><button class="btn btn-outline-warning" type="button" id="modifyCashbookBtn">수정</button></td>
+					<td><br><button style="width:100px; height:50px" class="btn btn-outline-warning" type="button" id="modifyCashbookBtn">수정</button></td>
 				</tr>
 			</table>
 		</form>

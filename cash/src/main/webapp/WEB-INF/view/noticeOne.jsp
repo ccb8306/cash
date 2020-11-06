@@ -20,9 +20,9 @@
 </div>
 <!-- 본문 -->
 <div class="container-fluit main-content">
-	<h1><br></h1>
+	<br>
 	<!-- 공지사항 상세보기 -->
-	<div><h2>공지사항 상세보기</h2></div>
+	<div class="pastel-cloud-300"><h3>공지사항 상세보기</h3></div>
 	<table class="table">
 		<tr>
 			<th>제목</th>
@@ -37,7 +37,7 @@
 			<td>${notice.noticeContent }</td>
 		</tr>
 	</table>
-	<div class="row" style="float:right">
+	<div class="row fl-r">
 		<a class="btn btn-outline-success" style="width:100px" href="/admin/modifyNotice?noticeId=${notice.noticeId}">수정</a>
 		<a class="btn btn-outline-danger" style="width:100px" href="/admin/removeNotice?noticeId=${notice.noticeId}">삭제</a>
 	</div>

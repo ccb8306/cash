@@ -20,12 +20,16 @@
 </div>
 <!-- 본문 -->
 <div class="container-fluit main-content">
-	<h1><br></h1>
+	<br>
 	<!-- 공지사항 -->
 	<div>
 		<div class="row">
-			<div><h2>공지사항</h2></div>
-			<div style="margin-left:auto"><a href="/admin/addNotice" class="btn btn-outline-primary">공지사항 작성</a></div>
+			<div>
+				<div class="pastel-cloud-300"><h2>공지사항</h2></div>
+			</div>
+			<div class="ml-a mt-100">
+				<a href="/admin/addNotice" class="btn btn-outline-primary">공지사항 작성</a>
+			</div>
 		</div>
 		<table class="table">
 			<thead>

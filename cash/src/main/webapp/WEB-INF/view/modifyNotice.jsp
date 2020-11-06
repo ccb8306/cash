@@ -35,9 +35,9 @@
 </div>
 <!-- 본문 -->
 <div class="container-fluit main-content">
-	<h1><br></h1>
+	<br>
 	<!-- 공지사항 수정 -->
-	<div><h2>공지사항 수정</h2></div>
+	<div class="pastel-cloud-300"><h3>공지사항 수정</h3></div>
 	<form id="modifyNoticeForm" method="post" action="modifyNotice">
 		<input type="hidden" value="${notice.noticeId}" name="noticeId">
 		<table class="table">
@@ -51,7 +51,7 @@
 			</tr>
 			<tr>
 				<th>내용</th>
-				<td><textarea id="noticeContent" name="noticeContent" rows="12" cols="100" class="form-control btn-block" style="width:100%;">${notice.noticeContent }</textarea></td>
+				<td><textarea id="noticeContent" name="noticeContent" rows="12" cols="100" class="form-control btn-block w100p">${notice.noticeContent }</textarea></td>
 			</tr>
 		</table>
 		<div class="row" style="float:right">

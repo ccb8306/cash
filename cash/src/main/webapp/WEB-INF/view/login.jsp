@@ -31,35 +31,38 @@
 	</div>
 	<div class="container" style="width:50%">	
 		<form id="loginForm" method="post" action="/login">
-			<table class="table" style="font-size:5px">
+			<table class="table">
 				<tr>
 					<td>ID : </td><td><input class="form-control" type="text" name="id" id="id"></td>
 				</tr>
 				<tr>
 					<td>PW : </td><td><input class="form-control" type="password" name="pw" id="pw"></td>
 				</tr>
+				<tr>
+					<td colspan="2"><button type="button" class="btn btn-block btn-outline-warning" id="loginBtn">Login</button></td>
+				</tr>
 			</table>
-			<button type="button" class="btn btn-block btn-outline-warning" id="loginBtn">Login</button>
+			
 		</form>
 	</div>
 	<!-- 공지사항 -->
-	<div class="container" style="margin-top:40px; width:60%; height:100px">
-		<h5>공지사항</h5>
-		<div style="height:100px">
+	<div class="container login-notice">
+		<div class="pastel-yellow-200"><h4>Notice</h4></div>
+		<div>
 			<table class="table">
 				<thead>
 					<tr>
-						<th class="fs-10">no</th>
-						<th class="fs-10" style="width:50%">제목</th>
-						<th class="fs-10">작성일</th>
+						<th class="fs-15">No</th>
+						<th class="fs-15" style="width:50%">Title</th>
+						<th class="fs-15">Date</th>
 					</tr>
 				</thead>
 				<tbody>
 					<c:forEach var="n" items="${noticeList}">
 						<tr>
-							<td class="fs-10">${n.noticeId }</td>
-							<td class="fs-10">${n.noticeTitle }</td>
-							<td class="fs-10">${n.noticeDate }</td>
+							<td class="fs-15">${n.noticeId }</td>
+							<td class="fs-15">${n.noticeTitle }</td>
+							<td class="fs-15">${n.noticeDate }</td>
 						</tr>
 					</c:forEach>
 				</tbody>
