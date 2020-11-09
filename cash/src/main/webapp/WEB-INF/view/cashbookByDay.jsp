@@ -21,7 +21,14 @@
 			
 			$('#addCashbookForm').submit();
 		});
+
+		
+		
 	});
+
+	function numberWithCommas(x) {
+	    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+	}
 </script>
 </head>
 <body>
@@ -39,9 +46,9 @@
 	<div style="width:300px; margin:0 auto">
 		<div class="pastel-peach-300">
 			<div class="row">
-			<div class=""><h3><a class="color-red" href="/admin/cashbookByDay?target=pre&currentYear=${currentYear }&currentMonth=${currentMonth }&currentDay=${currentDay }">[-]</a></h3></div>
+			<div class=""><h3><a class="color-red" href="/admin/cashbookByDay/pre/${currentYear }/${currentMonth }/${currentDay }">[-]</a></h3></div>
 			<div class="ml-a"><h3>&nbsp; ${currentYear }년 ${currentMonth }월 ${currentDay }일 &nbsp;</h3></div>
-			<div class="ml-a"><h3><a class="color-red" href="/admin/cashbookByDay?target=next&currentYear=${currentYear }&currentMonth=${currentMonth }&currentDay=${currentDay }">[+]</a></h3></div>
+			<div class="ml-a"><h3><a class="color-red" href="/admin/cashbookByDay/next/${currentYear }/${currentMonth }/${currentDay }">[+]</a></h3></div>
 			</div>
 		</div>
 	</div>
@@ -64,10 +71,10 @@
 						<td>${c.cashbookId}</td>
 						<td>${c.cashbookKind}</td>
 						<td>${c.categoryName}</td>
-						<td>${c.cashbookPrice}</td>
+						<td><script>document.write(numberWithCommas(${c.cashbookPrice}))</script></td>
 						<td>${c.cashbookContent}</td>
-						<td><a class="btn btn-outline-success" href="/admin/modifyCashbook?cashbookId=${c.cashbookId}&currentYear=${currentYear }&currentMonth=${currentMonth }&currentDay=${currentDay }">수정</a></td>
-						<td><a class="btn btn-outline-danger" href="/admin/removeCashbook?cashbookId=${c.cashbookId}&currentYear=${currentYear }&currentMonth=${currentMonth }&currentDay=${currentDay }">삭제</a></td>
+						<td><a class="btn btn-outline-success" href="/admin/modifyCashbook/${c.cashbookId}/${currentYear }/${currentMonth }/${currentDay }">수정</a></td>
+						<td><a class="btn btn-outline-danger" href="/admin/removeCashbook/${c.cashbookId}/${currentYear }/${currentMonth }/${currentDay }">삭제</a></td>
 					</tr>
 				</c:forEach>
 			</tbody>
@@ -77,6 +84,9 @@
 	<div style="margin-top:50px">
 		<form id="addCashbookForm" method="post" action="/admin/addCashbook">
 			<input type="hidden" name="cashbookDate" value="${currentYear }-${currentMonth }-${currentDay }">
+			<input type="hidden" name="currentYear" value="${currentYear }">
+			<input type="hidden" name="currentMonth" value="${currentMonth }">
+			<input type="hidden" name="currentDay" value="${currentDay }">
 			<div class="pastel-peach-200"><h5>내역 추가하기</h5></div>
 			<table class="table table-borderless">
 				<tr>
@@ -91,7 +101,7 @@
 						카테고리 : 
 						<select class="btn btn-outline-warning" id="categoryName" name="categoryName">
 							<c:forEach var="c" items="${categoryList }">
-								<option value="${c.categoryName }">${c.categoryName } : ${c.categoryInfo }</option>
+								<option value="${c.categoryName }">${c.categoryName } : ${c.cashbookKind }</option>
 							</c:forEach>
 						</select>
 					</td>

@@ -43,7 +43,7 @@
 				<c:forEach var="n" items="${noticeList}">
 					<tr>
 						<td>${n.noticeId }</td>
-						<td><a href="/admin/noticeOne?noticeId=${n.noticeId }">${n.noticeTitle }</a></td>
+						<td><a href="/admin/noticeOne/${n.noticeId }">${n.noticeTitle }</a></td>
 						<td>${n.noticeDate }</td>
 					</tr>
 				</c:forEach>
@@ -58,8 +58,8 @@
 			<!-- other : 현재 페이지가 1일 시 -->
 			<c:choose>
 				<c:when test="${currentPage > '1'}">
-					<li class="page-item"><a class="page-link" href="/admin/noticeList?currentPage=1">처음</a></li>
-					<li class="page-item"><a class="page-link" href="/admin/noticeList?currentPage=${currentPage-1}">이전</a></li>
+					<li class="page-item"><a class="page-link" href="/admin/noticeList/1">처음</a></li>
+					<li class="page-item"><a class="page-link" href="/admin/noticeList/${currentPage-1}">이전</a></li>
 				</c:when>
 				<c:otherwise>
 					<li class="page-item disabled"><a class="page-link">처음</a></li>		
@@ -72,8 +72,8 @@
 			<!-- other : 현재 페이지가 마지막 페이지 일 시 -->
 			<c:choose>
 				<c:when test="${currentPage < endPage}">
-					<li class="page-item"><a class="page-link" href="/admin/noticeList?currentPage=${currentPage+1}">다음</a></li>
-					<li class="page-item"><a class="page-link" href="/admin/noticeList?currentPage=${endPage}">맨끝</a></li>
+					<li class="page-item"><a class="page-link" href="/admin/noticeList/${currentPage+1}">다음</a></li>
+					<li class="page-item"><a class="page-link" href="/admin/noticeList/${endPage}">맨끝</a></li>
 				</c:when>
 				<c:otherwise>		
 					<li class="page-item disabled"><a class="page-link">다음</a></li>		

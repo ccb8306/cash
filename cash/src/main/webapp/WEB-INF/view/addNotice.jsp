@@ -46,7 +46,7 @@
 			</tr>
 			<tr>
 				<th>내용</th>
-				<td>내용 : <textarea class="form-control btn-block w100p" name="noticeContent" id="noticeContent" rows="12" cols="100"></textarea></td>
+				<td><textarea class="form-control btn-block w100p" name="noticeContent" id="noticeContent" rows="12" cols="100"></textarea></td>
 			</tr>
 		</table>
 		<button class="btn btn-outline-primary" type="button" id="addNoticeBtn">작성</button>

@@ -38,7 +38,7 @@
 	<br>
 	<!-- 공지사항 수정 -->
 	<div class="pastel-cloud-300"><h3>공지사항 수정</h3></div>
-	<form id="modifyNoticeForm" method="post" action="modifyNotice">
+	<form id="modifyNoticeForm" method="post" action="/admin/modifyNotice">
 		<input type="hidden" value="${notice.noticeId}" name="noticeId">
 		<table class="table">
 			<tr>

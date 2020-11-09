@@ -6,8 +6,8 @@
 	<select id="selectCategoryList" resultType="kr.co.gdu.cash.vo.Category">
 		SELECT 
 			category_name categoryName,
-			category_info categoryInfo
+			cashbook_kind cashbookKind
 		FROM category 
-		ORDER BY categoryInfo ASC
+		ORDER BY cashbookKind ASC
 	</select>
 </mapper>

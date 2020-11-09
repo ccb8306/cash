@@ -38,8 +38,8 @@
 		</tr>
 	</table>
 	<div class="row fl-r">
-		<a class="btn btn-outline-success" style="width:100px" href="/admin/modifyNotice?noticeId=${notice.noticeId}">수정</a>
-		<a class="btn btn-outline-danger" style="width:100px" href="/admin/removeNotice?noticeId=${notice.noticeId}">삭제</a>
+		<a class="btn btn-outline-success" style="width:100px" href="/admin/modifyNotice/${notice.noticeId}">수정</a>
+		<a class="btn btn-outline-danger" style="width:100px" href="/admin/removeNotice/${notice.noticeId}">삭제</a>
 	</div>
 </div>
 </body>

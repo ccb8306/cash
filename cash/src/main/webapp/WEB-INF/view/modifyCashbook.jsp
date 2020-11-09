@@ -64,10 +64,10 @@
 							<c:forEach var="c" items="${categoryList }">
 								<c:choose>
 									<c:when test="${cashbook.categoryName ==  c.categoryName}">
-										<option selected="selected" value="${c.categoryName }">${c.categoryName } : ${c.categoryInfo }</option>
+										<option selected="selected" value="${c.categoryName }">${c.categoryName } : ${c.cashbookKind }</option>
 									</c:when>
 									<c:otherwise>
-										<option value="${c.categoryName }">${c.categoryName } : ${c.categoryInfo }</option>
+										<option value="${c.categoryName }">${c.categoryName } : ${c.cashbookKind }</option>
 									</c:otherwise>
 								</c:choose>
 							</c:forEach>

@@ -10,10 +10,10 @@
 		   ,SUM((case when cashbook_kind = '수입' then cashbook_price ELSE 0 END)) AS "수입"
 		   ,SUM((case when cashbook_kind = '지출' then cashbook_price ELSE 0 END)) AS "지출"
 		   ,SUM((case when cashbook_kind = '수입' then cashbook_price ELSE 0 END)-
-			(case when cashbook_kind = '지출' then cashbook_price ELSE '' END)) AS "합계"
+			(case when cashbook_kind = '지출' then cashbook_price ELSE 0 END)) AS "합계"
 		FROM cashbook
 		GROUP BY mm
-		ORDER BY mm DESC LIMIT 3
+		ORDER BY yyyy, mm DESC LIMIT 3
 	</select>
 	<!-- 월별 총 수입,지출 -->
 	<select id="selectSumCashbookPriceByInOut" parameterType="java.util.Map" resultType="int">
