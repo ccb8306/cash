@@ -39,7 +39,7 @@
 	<div id="noticeBtn" class="menu-content" style="background-color:#99FFFF; width:5%; height:20%; margin-top:10px">
 		<p class="ml-10">공<br>지<br>사<br>항</p>
 	</div>
-	<div id="cashStatsBtn" class="menu-content" style="background-color:#FF9966; width:5%; height:20%; margin-top:10px">
+	<div id="cashStatsBtn" class="menu-content" style="background-color:#99FF99; width:5%; height:20%; margin-top:10px">
 		<p class="ml-10">통<br><br>계</p>
 	</div>
 	<div id="loginoutBtn" class="menu-content" style="background-color:#FF9966; width:5%; height:20%; margin-top:10px">

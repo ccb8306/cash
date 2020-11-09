@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 <link href="/resources/cash.css" rel="stylesheet" type="text/css" />
 <script>
 	$(document).ready(function(){
@@ -19,9 +20,6 @@
 		}
 	});
 
-	function numberWithCommas(x) {
-	    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-	}
 </script>
 </head>
 <body>
@@ -40,18 +38,18 @@
 	<div style="width:250px; margin:0 auto">
 		<div class="ml-a pastel-peach-250">
 			<div class="row">
-			<div class=""><h3><a class="color-red" href="/admin/cashbookByMonth/pre/${currentYear}/${currentMonth}">[-]</a></h3></div>
+			<div class=""><h3><a class="color-red" href="/admin/cashbookByMonth/pre/${currentYear}/${currentMonth}"><i class='fas fa-minus' style='font-size:35px;color:red'></i></a></h3></div>
 			<div class="ml-a"><h3>&nbsp; ${currentYear}년 ${currentMonth} 월 &nbsp;</h3></div>
-			<div class="ml-a"><h3><a class="color-red" href="/admin/cashbookByMonth/next/${currentYear}/${currentMonth}">[+]</a></h3></div>
+			<div class="ml-a"><h3><a class="color-red" href="/admin/cashbookByMonth/next/${currentYear}/${currentMonth}"><i class='fas fa-plus' style='font-size:35px;color:red'></i></a></h3></div>
 			</div>
 		</div>
 	</div>
-	<div class="pastel-melon-250">
+	<div class="pastel-yellow-250">
 		<div>
-			이번달 수입 합계 : <script>document.write(numberWithCommas(${sumIn }))</script>
+			이번달 수입 합계 : <script>document.write(Number(${sumIn}).toLocaleString());</script>
 		</div>
 		<div>
-			이번달 지출 합계 : <script>document.write(numberWithCommas(${sumOut }))</script>
+			 이번달 지출 합계 : <script>document.write(Number(${sumOut}).toLocaleString());</script>
 		</div>
 	</div>
 	<div>
@@ -73,6 +71,8 @@
 						<c:if test="${i-(firstDayOfWeek-1) < 1}">
 							<td>&nbsp;</td>
 						</c:if>
+						
+										
 						<c:if test="${i-(firstDayOfWeek-1) > 0}">
 							<td style="width:14%;">
 								<div>
@@ -80,7 +80,11 @@
 								</div>
 								<c:forEach var="c" items="${cashList}">
 									<c:if test="${i-(firstDayOfWeek-1) == c.day}">
-										<div>${c.cashbookKind } : <script>document.write(numberWithCommas(${c.cashbookPrice }))</script></div>
+										<div id="div${i}"> 
+										<script>
+											document.write(Number(${c.cashbookPrice}).toLocaleString());
+										</script>
+										</div>
 									
 									</c:if>
 								</c:forEach>

@@ -53,7 +53,7 @@
 	<div style="width:300px; margin:0 auto; margin-top:10%">
 		<br>
 		<div class="mt-100 align-center">
-			<h2 class="pastel-yellow-300">최근 3개월</h2>
+			<h2 class="pastel-yellow-300">최근 3개월 내역</h2>
 		</div>
 	</div>
 	<div class="row">	
@@ -65,7 +65,7 @@
 							<th style="text-align:center" colspan="2">${io["yyyy"]}년</th>
 						</tr>
 						<tr>
-							<th style="text-align:center" colspan="2"><a href="/admin/cashbookByMonth/${io['yyyy']}/${io['mm']}">${io["mm"]}월</a></th>
+							<th style="text-align:center" colspan="2"><a href="/admin/cashbookByMonth/now/${io['yyyy']}/${io['mm']}">${io["mm"]}월</a></th>
 						</tr>
 					</thead>
 					<tbody style="background:#FFFAF0;">
