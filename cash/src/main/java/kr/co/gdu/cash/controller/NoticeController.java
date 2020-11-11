@@ -19,7 +19,7 @@ import kr.co.gdu.cash.vo.Notice;
 @Controller
 public class NoticeController {
 	@Autowired private NoticeService noticeService;
-	
+	int type = 4;
 	// 공지사항 목록
 	@GetMapping("/admin/noticeList/{currentPage}")
 	public String getNoticeList(Model model,
@@ -40,21 +40,21 @@ public class NoticeController {
 		model.addAttribute("endPage", endPage);
 		model.addAttribute("noticeList", noticeList);
 		
-		model.addAttribute("type", 3);
+		model.addAttribute("type", type);
 		return "noticeList";
 	}
 	
 	// 공지사항 추가 폼
 	@GetMapping("/admin/addNotice")
 	public String addNotice(Model model) {
-		model.addAttribute("type", 3);
+		model.addAttribute("type", type);
 		return "addNotice";
 	}
 	// 공지사항 추가 액션
 	@PostMapping("/admin/addNotice")
 	public String addNotice(Model model, Notice notice) {
 		noticeService.addNotice(notice);
-		model.addAttribute("type", 3);
+		model.addAttribute("type", type);
 		return "redirect:/admin/noticeList/1";
 	}
 	
@@ -65,7 +65,7 @@ public class NoticeController {
 		
 		Notice notice = noticeService.getNoticeOne(noticeId);
 		model.addAttribute("notice", notice);
-		model.addAttribute("type", 3);
+		model.addAttribute("type", type);
 		return "noticeOne";
 	}
 	
@@ -75,7 +75,7 @@ public class NoticeController {
 			@PathVariable(name="noticeId", required = true) int noticeId) {
 		
 		noticeService.removeNotie(noticeId);
-		model.addAttribute("type", 3);
+		model.addAttribute("type", type);
 		return "redirect:/admin/noticeList/1";
 	}
 	
@@ -86,7 +86,7 @@ public class NoticeController {
 		
 		Notice notice = noticeService.getNoticeOne(noticeId);
 		model.addAttribute("notice", notice);
-		model.addAttribute("type", 3);
+		model.addAttribute("type", type);
 		return "modifyNotice";
 	}
 	// 공지사항 수정 액션

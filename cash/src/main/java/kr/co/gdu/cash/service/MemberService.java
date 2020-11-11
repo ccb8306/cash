@@ -11,6 +11,7 @@ import kr.co.gdu.cash.vo.Member;
 @Transactional
 public class MemberService {
 	@Autowired private MemberMapper memberMapper;
+	// 로그인
 	public Member getMemberById(Member paramMember) {
 		Member member = memberMapper.selectMemberById(paramMember.getId());
 		if(member != null && member.getPw().equals(paramMember.getPw())) {
@@ -18,5 +19,10 @@ public class MemberService {
 		}
 		
 		return null;
+	}
+	
+	// 사용자 추가
+	public int addMember(Member member) {
+		return memberMapper.insertMember(member);
 	}
 }

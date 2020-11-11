@@ -20,7 +20,7 @@
 	<img src="/resources/image/note.jpg" class="bg-img">
 </div>
 <!-- 메뉴 -->
-<div class="container-fluit menu-bar">
+<div class="container-fluit menu-bar" id="menubar">
 	<jsp:include page="/WEB-INF/view/include/menu.jsp"></jsp:include>
 </div>
 <!-- 본문 -->

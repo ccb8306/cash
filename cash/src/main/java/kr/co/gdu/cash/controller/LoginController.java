@@ -21,6 +21,7 @@ public class LoginController {
 	@Autowired private NoticeService noticeService;
 	@Autowired private MemberService memberService;
 	
+	// 로그인 폼
 	@GetMapping(value={"/", "/login"})
 	public String login(Model model, HttpSession session) {
 		if(session.getAttribute("loginId") != null) {
@@ -33,6 +34,7 @@ public class LoginController {
 		return "login";
 	}
 	
+	// 로그인 액션
 	@PostMapping("/login")
 	public String login(Member member, HttpSession session) {
 		Member loginMember = memberService.getMemberById(member);

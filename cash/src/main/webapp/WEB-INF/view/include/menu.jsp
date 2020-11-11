@@ -7,7 +7,11 @@
 		}else if('${type}' == 2){
 			$("#cashBtn").css( 'width', '7%' );
 		}else if('${type}' == 3){
+			$("#cashbookListBtn").css( 'width', '7%' );
+		}else if('${type}' == 4){
 			$("#noticeBtn").css( 'width', '7%' );
+		}else if('${type}' == 5){
+			$("#cashStatsBtn").css( 'width', '7%' );
 		}
 			
 		$("#homeBtn").click(function() {
@@ -16,11 +20,17 @@
 		$("#cashBtn").click(function() {
 			$(location).attr('href', '/admin/cashbookByMonth/now/-1/-1')
 		});
+		$("#cashbookListBtn").click(function() {
+			$(location).attr('href', '/admin/cashbookList/1')
+		});
 		$("#noticeBtn").click(function() {
 			$(location).attr('href', '/admin/noticeList/1')
 		});
 		$("#cashStatsBtn").click(function() {
-			$(location).attr('href', 'http://localhost:8080/cashStats.html')
+			$(location).attr('href', '/admin/monthlyAvgIncoming.jsp')
+		});
+		$("#addMemberBtn").click(function() {
+			$(location).attr('href', '/admin/addMember')
 		});
 		$("#loginoutBtn").click(function() {
 			$(location).attr('href', '/admin/logout')
@@ -36,12 +46,22 @@
 		<p class="ml-10">가<br>계<br>부</p>
 	</div>
 	
+	<div id="cashbookListBtn" class="menu-content" style="background-color:#FFCC66; width:5%; height:20%; margin-top:10px">
+		<p class="ml-10">리<br>스<br>트</p>
+	</div>
+	
 	<div id="noticeBtn" class="menu-content" style="background-color:#99FFFF; width:5%; height:20%; margin-top:10px">
 		<p class="ml-10">공<br>지<br>사<br>항</p>
 	</div>
+	
 	<div id="cashStatsBtn" class="menu-content" style="background-color:#99FF99; width:5%; height:20%; margin-top:10px">
 		<p class="ml-10">통<br><br>계</p>
 	</div>
+	
+	<div id="addMemberBtn" class="menu-content" style="background-color:#99FF99; width:5%; height:20%; margin-top:10px">
+		<p class="ml-10">사 추<br>용 가<br>자</p>
+	</div>
+	
 	<div id="loginoutBtn" class="menu-content" style="background-color:#FF9966; width:5%; height:20%; margin-top:10px">
 		<p class="ml-10">로<br>그<br>아<br>읏</p>
 	</div>

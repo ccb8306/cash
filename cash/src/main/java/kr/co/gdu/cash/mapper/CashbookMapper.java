@@ -18,4 +18,10 @@ public interface CashbookMapper {
 	
 	Cashbook selectCashbookOne(int cashbookId);
 	int updateCashbook(Cashbook cashbook);
+	
+	// 전체
+	List<Cashbook> selectCashbookListByPage(Map<String, Object> map);
+	int selectCashbookListEndPage();
+	
+	List<Cashbook> selectCashbookListAll();
 }

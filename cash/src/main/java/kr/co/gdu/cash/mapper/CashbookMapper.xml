@@ -95,4 +95,44 @@
 			update_date = NOW()
 		WHERE cashbook_id = #{cashbookId}
 	</update>
+	
+	<!-- 캐쉬리스트 -->
+	<select id="selectCashbookListByPage" parameterType="java.util.Map" resultType="kr.co.gdu.cash.vo.Cashbook">
+		select
+	        cashbook_id cashbookId,
+	        cashbook_kind cashbookKind,
+	        category_name categoryName,
+	        cashbook_price cashbookPrice,
+	        cashbook_content cashbookContent,
+	        cashbook_date cashbookDate,
+	        create_date createDate,
+	        update_date updateDate
+	     from cashbook
+	     order by cashbook_date desc, cashbook_id desc
+	     limit #{beginRow}, #{rowPage}
+	</select>
+	<!-- 캐쉬리스트의 마지막 페이지 -->
+	<select id="selectCashbookListEndPage" resultType="int">
+		select
+			COUNT(*) 
+	     from cashbook
+	     order by cashbook_date desc, cashbook_id desc
+	</select>
+	
+	
+	
+	<!-- 전체 캐쉬리스트 -->
+	<select id="selectCashbookListAll" resultType="kr.co.gdu.cash.vo.Cashbook">
+		select
+	        cashbook_id cashbookId,
+	        cashbook_kind cashbookKind,
+	        category_name categoryName,
+	        cashbook_price cashbookPrice,
+	        cashbook_content cashbookContent,
+	        cashbook_date cashbookDate,
+	        create_date createDate,
+	        update_date updateDate
+	     from cashbook
+	     order by cashbook_date desc, cashbook_id desc
+	</select>
 </mapper>

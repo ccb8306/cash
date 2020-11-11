@@ -63,4 +63,21 @@ public class CashbookService {
 	public int modifyCashbook(Cashbook cashbook) {
 		return cashbookMapper.updateCashbook(cashbook);
 	}
+	
+	// 캐쉬리스트 
+	public List<Cashbook> getCashbookListByPage(int currentPage, int rowPage){
+		Map<String, Object> map = new HashMap<>();
+		map.put("beginRow", (currentPage - 1) * rowPage);
+		map.put("rowPage", rowPage);
+		return cashbookMapper.selectCashbookListByPage(map);
+	}
+	public int getCashbookListEndPage() {
+		return cashbookMapper.selectCashbookListEndPage();
+	}
+	
+	// 캐쉬리스트 
+	public List<Cashbook> getCashbookListAll(){
+		return cashbookMapper.selectCashbookListAll();
+	}
 }
+

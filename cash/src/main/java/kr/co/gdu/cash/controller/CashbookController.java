@@ -21,6 +21,8 @@ import kr.co.gdu.cash.vo.Category;
 public class CashbookController {	
 	@Autowired private CashbookService cashbookService;
 	@Autowired private CategoryService CategoryService;
+	int type1 = 2; // 가계부
+	int type2 = 3; // 리스트
 	
 	// 캐쉬 내역 추가
 	@PostMapping("/admin/addCashbook")
@@ -94,8 +96,7 @@ public class CashbookController {
 		// cashList
 		model.addAttribute("cashList", cashList);  
 		
-		// 페이지 타입 - 1 = home, 2 = cash, 3 = notice
-		model.addAttribute("type", 2);
+		model.addAttribute("type", type1);
 		return "cashbookByMonth";
 	}
 	
@@ -134,7 +135,7 @@ public class CashbookController {
 		model.addAttribute("cashbookList", cashbookList);
 		model.addAttribute("categoryList", categoryList);
 		
-		model.addAttribute("type", 2);
+		model.addAttribute("type", type1);
 		return "cashbookByDay";
 	}
 	
@@ -157,7 +158,7 @@ public class CashbookController {
 		model.addAttribute("currentMonth", currentMonth); 
 		model.addAttribute("currentDay", currentDay);
 		
-		model.addAttribute("type", 2);
+		model.addAttribute("type", type1);
 		return "modifyCashbook";
 	}
 	
@@ -170,5 +171,21 @@ public class CashbookController {
 		
 		cashbookService.modifyCashbook(cashbook);
 		return "redirect:/admin/cashbookByDay/now/" + currentYear + "/" + currentMonth + "/" + currentDay;
+	}
+	
+	// 캐쉬 리스트
+	@GetMapping("/admin/cashbookList/{currentPage}")
+	public String cashbookList(Model model,
+			@PathVariable(name = "currentPage") int currentPage) {
+		int rowPage = 8;
+		int endPage = cashbookService.getCashbookListEndPage();
+		
+		List<Cashbook> cashbookList = cashbookService.getCashbookListByPage(currentPage, rowPage);
+		
+		model.addAttribute("currentPage",currentPage);
+		model.addAttribute("endPage",endPage);
+		model.addAttribute("cashbookList",cashbookList);
+		model.addAttribute("type", type2);
+		return "cashbookList";
 	}
 }
