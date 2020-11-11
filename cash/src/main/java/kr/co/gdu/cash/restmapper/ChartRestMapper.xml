@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.gdu.cash.restmapper.ChartRestMapper">
+	<!-- 연도별 평균 수입 -->
+	<select id="selectYearAvgRevenue" resultType="java.util.Map">
+		SELECT 
+			YEAR(cashbook_date) year, 
+			AVG(cashbook_price) revenue
+		FROM cashbook WHERE cashbook_kind='수입' GROUP BY YEAR(cashbook_date);
+	</select>
+	<!-- 연도별 평균 지출 -->
+	<select id="selectYearAvgExpenditure" resultType="java.util.Map">
+		SELECT 
+			YEAR(cashbook_date) year, 
+			AVG(cashbook_price) expenditure
+		FROM cashbook WHERE cashbook_kind='지출' GROUP BY YEAR(cashbook_date);
+	</select>
+	<!-- 연도별 평균 수익 (수입 - 지출) -->
+	<select id="selectYearAvgProfit" resultType="java.util.Map">
+		SELECT 
+			YEAR(cashbook_date) year, 
+			SUM((case when cashbook_kind='수입' then cashbook_price ELSE 0 END)
+			-(case when cashbook_kind='지출' then cashbook_price ELSE 0 END)) profit
+		FROM cashbook 
+		GROUP BY YEAR(cashbook_date);
+	</select>
+</mapper>

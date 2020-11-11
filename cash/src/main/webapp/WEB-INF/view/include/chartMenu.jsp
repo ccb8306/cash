@@ -3,16 +3,31 @@
 <script>
 	$(document).ready(function(){
 		$('#avgRevenue').click(function(){
-			if($('#statsOption').val() == '월별'){
-				$(location).attr('href', '/admin/monthlyAvgIncoming.jsp')
+			if($('#statsOption').val() == '연도별'){
+				$(location).attr('href', '/admin/yearAvgRevenue.jsp')
+			}else if($('#statsOption').val() == '월별'){
+			}
+		})
+
+		$('#avgExpenditure').click(function(){
+			if($('#statsOption').val() == '연도별'){
+				$(location).attr('href', '/admin/yearAvgExpenditure.jsp')
+			}else if($('#statsOption').val() == '월별'){
+			}
+		})
+	
+		$('#avgProfit').click(function(){
+			if($('#statsOption').val() == '연도별'){
+				$(location).attr('href', '/admin/yearAvgProfit.jsp')
+			}else if($('#statsOption').val() == '월별'){
 			}
 		})
 	})
 </script>
 <div>
-	<select id="statsOption">
-		<option>월별</option>
+	<select class="btn btn-outline-warning" id="statsOption">
 		<option>연도별</option>
+		<option>월별</option>
 	</select>
 </div>
 <div>

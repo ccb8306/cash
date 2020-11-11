@@ -11,8 +11,36 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
 	$(document).ready(function(){
+		let chartData = {
+			type: 'pie', 
+	        data: {
+	           labels:[],
+	           datasets:[{
+	              label:'연도별 평균 수입',
+	              backgroundColor: [],
+	              borderColor: 'rgba(255, 255, 255, 0.5)',
+	                 data:[],
+	                 borderWidth: 1
+	           }]
+	        }
+		};
+		
 		$.ajax({
-		})
+			url:'/admin/yearAvgRevenue',
+			type:'get',
+			success:function(data){
+				console.log(data);
+				
+				$(data).each(function(key, value) {
+					chartData.data.labels.push(value.year);
+					chartData.data.datasets[0].data.push(value.revenue);
+					chartData.data.datasets[0].backgroundColor.push("rgb("+Math.floor(Math.random()*256)+","+Math.floor(Math.random()*256)+","+Math.floor(Math.random()*256)+")");
+				});
+				
+				var ctx = document.getElementById('yearAvgRevenueChart').getContext('2d');
+				var chart = new Chart(ctx, chartData);
+			}
+		});
 	});
 </script>
 </head>
@@ -36,7 +64,7 @@
 	
 	<!-- 차트1 -->
 	<div>
-		<canvas id="chart1"></canvas>
+		<canvas id="yearAvgRevenueChart"></canvas>
 	</div>
 	<!-- 테이블 -->
 	<div>

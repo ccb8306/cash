@@ -71,8 +71,13 @@ public class CashbookService {
 		map.put("rowPage", rowPage);
 		return cashbookMapper.selectCashbookListByPage(map);
 	}
-	public int getCashbookListEndPage() {
-		return cashbookMapper.selectCashbookListEndPage();
+	public int getCashbookListEndPage(int rowPage) {
+		int endPage = cashbookMapper.selectCashbookListEndPage();
+		if(endPage%rowPage == 0) {
+			return (int)(endPage/rowPage);
+		}else {
+			return (int)(endPage/rowPage) +1;
+		}
 	}
 	
 	// 캐쉬리스트 

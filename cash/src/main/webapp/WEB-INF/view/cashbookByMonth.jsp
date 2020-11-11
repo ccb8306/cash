@@ -80,7 +80,7 @@
 								</div>
 								<c:forEach var="c" items="${cashList}">
 									<c:if test="${i-(firstDayOfWeek-1) == c.day}">
-										<div id="div${i}"> 
+										<div id="div${i}"> ${c.cashbookKind }
 										<script>
 											document.write(Number(${c.cashbookPrice}).toLocaleString());
 										</script>

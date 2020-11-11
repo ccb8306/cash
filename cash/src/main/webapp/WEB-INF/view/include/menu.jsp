@@ -27,7 +27,7 @@
 			$(location).attr('href', '/admin/noticeList/1')
 		});
 		$("#cashStatsBtn").click(function() {
-			$(location).attr('href', '/admin/monthlyAvgIncoming.jsp')
+			$(location).attr('href', '/admin/yearAvgRevenue.jsp')
 		});
 		$("#addMemberBtn").click(function() {
 			$(location).attr('href', '/admin/addMember')

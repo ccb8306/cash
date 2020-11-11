@@ -178,7 +178,7 @@ public class CashbookController {
 	public String cashbookList(Model model,
 			@PathVariable(name = "currentPage") int currentPage) {
 		int rowPage = 8;
-		int endPage = cashbookService.getCashbookListEndPage();
+		int endPage = cashbookService.getCashbookListEndPage(rowPage);
 		
 		List<Cashbook> cashbookList = cashbookService.getCashbookListByPage(currentPage, rowPage);
 		

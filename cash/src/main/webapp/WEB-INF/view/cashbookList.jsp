@@ -25,34 +25,68 @@
 		<div class="pastel-yellow-300"><h2>전체 리스트</h2></div>
 	</div>
 	<a href="/admin/cashbookListExcel">[전체 리스트를 엑셀 파일로 다운로드]</a>
-	<table class="table">
-		<thead>
-			<tr>
-				<th>id</th>
-				<th>kind</th>
-				<th>name</th>
-				<th>price</th>
-				<th>content</th>
-				<th>cashbook_date</th>
-				<th>create_date</th>
-				<th>update_date</th>
-			</tr>
-		</thead>
-		<tbody>
-			<c:forEach var="c" items="${cashbookList }">
+	<div>
+		<table class="table">
+			<thead>
 				<tr>
-					<td>${c.cashbookId }</td>
-					<td>${c.cashbookKind }</td>
-					<td>${c.categoryName }</td>
-					<td>${c.cashbookPrice }</td>
-					<td>${c.cashbookContent }</td>
-					<td>${c.cashbookDate }</td>
-					<td>${c.createDate }</td>
-					<td>${c.updateDate }</td>
+					<th>id</th>
+					<th>kind</th>
+					<th>name</th>
+					<th>price</th>
+					<th>content</th>
+					<th>cashbook_date</th>
+					<th>create_date</th>
+					<th>update_date</th>
 				</tr>
-			</c:forEach>
-		</tbody>
-	</table>
+			</thead>
+			<tbody>
+				<c:forEach var="c" items="${cashbookList }">
+					<tr>
+						<td>${c.cashbookId }</td>
+						<td>${c.cashbookKind }</td>
+						<td>${c.categoryName }</td>
+						<td>${c.cashbookPrice }</td>
+						<td>${c.cashbookContent }</td>
+						<td>${c.cashbookDate }</td>
+						<td>${c.createDate }</td>
+						<td>${c.updateDate }</td>
+					</tr>
+				</c:forEach>
+			</tbody>
+		</table>
+	</div>
+	
+	<!-- 페이징 -->	
+	<div style="margin-left:35%"> 
+		<ul class="pagination">
+			<!-- when : 현재 페이지가 1보다 클시 -->
+			<!-- other : 현재 페이지가 1일 시 -->
+			<c:choose>
+				<c:when test="${currentPage > '1'}">
+					<li class="page-item"><a class="page-link" href="/admin/cashbookList/1">처음</a></li>
+					<li class="page-item"><a class="page-link" href="/admin/cashbookList/${currentPage-1}">이전</a></li>
+				</c:when>
+				<c:otherwise>
+					<li class="page-item disabled"><a class="page-link">처음</a></li>		
+					<li class="page-item disabled"><a class="page-link">이전</a></li>		
+				</c:otherwise>
+			</c:choose>
+			<!-- 현재 페이지 표시 -->
+			<li class="page-item"><a class="page-link">${currentPage}</a></li>
+			<!-- when : 현재 페이지가 마지막 페이지 보다 작을 시 -->
+			<!-- other : 현재 페이지가 마지막 페이지 일 시 -->
+			<c:choose>
+				<c:when test="${currentPage < endPage}">
+					<li class="page-item"><a class="page-link" href="/admin/cashbookList/${currentPage+1}">다음</a></li>
+					<li class="page-item"><a class="page-link" href="/admin/cashbookList/${endPage}">맨끝</a></li>
+				</c:when>
+				<c:otherwise>		
+					<li class="page-item disabled"><a class="page-link">다음</a></li>		
+					<li class="page-item disabled"><a class="page-link">맨끝</a></li>		
+				</c:otherwise>
+			</c:choose>
+		</ul>
+	</div>
 </div>
 </body>
 </html>
