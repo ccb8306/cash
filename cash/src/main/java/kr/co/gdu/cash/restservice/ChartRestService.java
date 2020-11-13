@@ -28,4 +28,20 @@ public class ChartRestService {
 	public List<Map<String, Object>> getYearAvgProfit(){
 		return chartRestMapper.selectYearAvgProfit();
 	}
+	
+	
+	// 연도별 총 수입
+	public List<Map<String, Object>> getYearTotalRevenue(){
+		return chartRestMapper.selectYearTotalRevenue();
+	}
+	
+	// 연도별 총 지출
+	public List<Map<String, Object>> getYearTotalExpenditure(){
+		return chartRestMapper.selectYearTotalExpenditure();
+	}
+	
+	// 연도별 총 수익
+	public List<Map<String, Object>> getYearTotalProfit(){
+		return chartRestMapper.selectYearTotalProfit();
+	}
 }

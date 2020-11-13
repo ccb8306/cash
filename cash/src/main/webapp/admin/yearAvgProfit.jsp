@@ -16,7 +16,7 @@
 	        data: {
 	           labels:[],
 	           datasets:[{
-	              label:[],
+	              label:'연도별 평균 수익(수입 - 지출)',
 	              backgroundColor: [],
 	              borderColor: 'rgba(255, 255, 255, 0.5)',
 	                 data:[],
@@ -30,14 +30,17 @@
 			type:'get',
 			success:function(data){
 				console.log(data);
+				let ranColor1 = Math.floor(Math.random()*256);
+				let ranColor2 = Math.floor(Math.random()*256);
+				let ranColor3 = Math.floor(Math.random()*256);
 				
 				$(data).each(function(key, value) {
 					chartData.data.labels.push(value.year);
 					chartData.data.datasets[0].data.push(value.profit);
-					chartData.data.datasets[0].backgroundColor.push("rgb("+Math.floor(Math.random()*256)+","+Math.floor(Math.random()*256)+","+Math.floor(Math.random()*256)+")");
+					chartData.data.datasets[0].backgroundColor.push("rgba(" + ranColor1 +  ", "+ ranColor2 + ", " + ranColor3 + ", 0.4)");
 				});
 				
-				var ctx = document.getElementById('yearAvgProfitChart').getContext('2d');
+				var ctx = document.getElementById('chart').getContext('2d');
 				var chart = new Chart(ctx, chartData);
 			}
 		});
@@ -64,7 +67,7 @@
 	
 	<!-- 차트1 -->
 	<div>
-		<canvas id="yearAvgProfitChart"></canvas>
+		<canvas id="chart"></canvas>
 	</div>
 	<!-- 테이블 -->
 	<div>

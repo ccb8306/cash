@@ -12,7 +12,7 @@
 <script>
 	$(document).ready(function(){
 		let chartData = {
-			type: 'pie', 
+			type: 'horizontalBar', 
 	        data: {
 	           labels:[],
 	           datasets:[{
@@ -30,14 +30,17 @@
 			type:'get',
 			success:function(data){
 				console.log(data);
+				let ranColor1 = Math.floor(Math.random()*256);
+				let ranColor2 = Math.floor(Math.random()*256);
+				let ranColor3 = Math.floor(Math.random()*256);
 				
 				$(data).each(function(key, value) {
 					chartData.data.labels.push(value.year);
 					chartData.data.datasets[0].data.push(value.expenditure);
-					chartData.data.datasets[0].backgroundColor.push("rgb("+Math.floor(Math.random()*256)+","+Math.floor(Math.random()*256)+","+Math.floor(Math.random()*256)+")");
+					chartData.data.datasets[0].backgroundColor.push("rgba(" + ranColor1 +  ", "+ ranColor2 + ", " + ranColor3 + ", 0.4)");
 				});
 				
-				var ctx = document.getElementById('yearAvgExpenditureChart').getContext('2d');
+				var ctx = document.getElementById('chart').getContext('2d');
 				var chart = new Chart(ctx, chartData);
 			}
 		});
@@ -64,7 +67,7 @@
 	
 	<!-- 차트1 -->
 	<div>
-		<canvas id="yearAvgExpenditureChart"></canvas>
+		<canvas id="chart"></canvas>
 	</div>
 	<!-- 테이블 -->
 	<div>

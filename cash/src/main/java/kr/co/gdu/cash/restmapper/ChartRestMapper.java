@@ -13,4 +13,11 @@ public interface ChartRestMapper {
 	List<Map<String, Object>> selectYearAvgExpenditure();
 	// 연도별 평균 수익(수입 - 지출)
 	List<Map<String, Object>> selectYearAvgProfit();
+	
+	// 연도별 총 수입
+	List<Map<String, Object>> selectYearTotalRevenue();
+	// 연도별 총 지출
+	List<Map<String, Object>> selectYearTotalExpenditure();
+	// 연도별 총 수익(수입 - 지출)
+	List<Map<String, Object>> selectYearTotalProfit();
 }

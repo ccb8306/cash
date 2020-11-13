@@ -12,33 +12,29 @@
 <script>
 	$(document).ready(function(){
 		let chartData = {
-			type: 'pie', 
+			type: 'line', 
 	        data: {
 	           labels:[],
 	           datasets:[{
-	              label:'연도별 평균 수입',
-	              backgroundColor: [],
-	              borderColor: 'rgba(255, 255, 255, 0.8)',
+	              label:['연도별 총 수입'],
+	              backgroundColor: 'rgba(255,00,00, 0.5)',
+	              borderColor: 'rgba(255, 00, 00, 0.5)',
 	                 data:[],
+	         		fill: false,
 	                 borderWidth: 1
 	           }]
-	        }
+			}
 		};
 		
 		$.ajax({
-			url:'/admin/yearAvgRevenue',
+			url:'/admin/yearTotalRevenue',
 			type:'get',
 			success:function(data){
 				console.log(data);
 				
 				$(data).each(function(key, value) {
-					let ranColor1 = Math.floor(Math.random()*256);
-					let ranColor2 = Math.floor(Math.random()*256);
-					let ranColor3 = Math.floor(Math.random()*256);
 					chartData.data.labels.push(value.year);
 					chartData.data.datasets[0].data.push(value.revenue);
-					chartData.data.datasets[0].backgroundColor.push("rgba(" + ranColor1 +  ", "+ ranColor2 + ", " + ranColor3 + ", 0.4)");
-					
 				});
 				
 				var ctx = document.getElementById('chart').getContext('2d');
