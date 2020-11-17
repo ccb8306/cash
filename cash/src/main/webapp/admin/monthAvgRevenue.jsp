@@ -54,7 +54,7 @@
 						let ranColor1 = Math.floor(Math.random()*256);
 						let ranColor2 = Math.floor(Math.random()*256);
 						let ranColor3 = Math.floor(Math.random()*256);
-						chartData.data.labels.push(value.month+"월");
+						chartData.data.labels.push(value.month+"월 : " + value.revenue);
 						chartData.data.datasets[0].data.push(value.revenue);
 						chartData.data.datasets[0].backgroundColor.push("rgba(" + ranColor1 +  ", "+ ranColor2 + ", " + ranColor3 + ", 0.2)");
 						

@@ -31,70 +31,45 @@
 		
 		// 연도 변경시 해당 연도의 월별 결과 출력
 		$('#yearList').change(function(){
-
-			var DATA_COUNT = 16;
-			var MIN_XY = -150;
-			var MAX_XY = 100;
-
 			var utils = Samples.utils;
 
 			utils.srand(110);
 
-			function colorize(opaque, context) {
-				var value = context.dataset.data[context.dataIndex];
-				var x = value.x / 100;
-				var y = value.y / 100;
-				var r = x < 0 && y < 0 ? 250 : x < 0 ? 150 : y < 0 ? 50 : 0;
-				var g = x < 0 && y < 0 ? 0 : x < 0 ? 50 : y < 0 ? 150 : 250;
-				var b = x < 0 && y < 0 ? 0 : x > 0 && y > 0 ? 250 : 150;
-				var a = opaque ? 1 : 0.5 * value.v / 1000;
+			let ranColor1 = Math.floor(Math.random()*256);
+			let ranColor2 = Math.floor(Math.random()*256);
+			let ranColor3 = Math.floor(Math.random()*256);
 
-				return 'rgba(' + r + ',' + g + ',' + b + ',' + a + ')';
-			}
-
-			function generateData() {
-				
-				var data = [];
-				var i;
-				/*
-				for (i = 0; i < 10; ++i) {
-					data.push({
-						x:100,
-						y: 150000,
-						v: utils.rand(0, 1000)
-					});
-					data.push({
-						x:200,
-						y: 100000,
-						v: utils.rand(0, 1000)
-					});
-				}
-				*/
-				$.ajax({
-					url:'/admin/monthAvgExpenditure/' + $('#yearList option:selected').val(),
-					type:'get',
-					success:function(data1){
-						$(data1).each(function(key, value) {
-							console.log(value.month);
-							console.log(value.expenditure);
-							data.push({
-								x: value.month,
-								y: value.expenditure,
-								v: utils.rand(0, 1000)
-							});				
-						});
-						
-					}
-				});
-
-				return data;
-			}
-
-			var data = {
-				datasets: [{
-					data: generateData()
+			
+			let data = {
+				datasets: [{	
+					backgroundColor : [],
+					data: []
 				}]
 			};
+			
+			$('#chartParent').empty();
+			$('#chartParent').append('<canvas id="chart"></canvas>');
+			
+			$.ajax({
+				url:'/admin/monthAvgExpenditure/' + $('#yearList option:selected').val(),
+				type:'get',
+				success:function(data1){
+					
+					$(data1).each(function(key, value) {
+						//var m = value.month + '월'
+						data.datasets[0].data.push({
+							x: value.month,
+							y: value.expenditure,
+							v: utils.rand(0, 1000)
+						});		
+						data.datasets[0].backgroundColor.push("rgba(" + ranColor1 +  ", "+ ranColor2 + ", " + ranColor3 + ", 0.2)");
+						data.labels.push(value.month+"월 : " + value.expenditure);		
+					});
+					chart.update();
+					
+				}
+			});
+
 
 			var options = {
 				aspectRatio: 1,
@@ -103,10 +78,6 @@
 
 				elements: {
 					point: {
-						backgroundColor: colorize.bind(null, false),
-
-						borderColor: colorize.bind(null, true),
-
 						borderWidth: function(context) {
 							return Math.min(Math.max(1, context.datasetIndex + 1), 8);
 						},
@@ -188,9 +159,8 @@
 		</select>
 	</div>
 	<!-- 차트1 -->
-	<div id="chartParent">
-		<canvas id="chart"></canvas>
-	</div>
+	<br>
+	<div id="chartParent" style="width:550px"></div>
 	<!-- 테이블 -->
 	<div>
 	</div>
