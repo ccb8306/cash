@@ -7,7 +7,7 @@
 			if($('#statsOption').val() == 'statsYear'){
 				$(location).attr('href', '/admin/yearAvgRevenue.jsp?stats=year')
 			}else if($('#statsOption').val() == 'statsMonth'){
-				$(location).attr('href', '/admin/yearAvgRevenue.jsp?stats=month')
+				$(location).attr('href', '/admin/monthAvgRevenue.jsp?stats=month')
 			}
 		})
 
@@ -15,6 +15,7 @@
 			if($('#statsOption').val() == 'statsYear'){
 				$(location).attr('href', '/admin/yearAvgExpenditure.jsp?stats=year')
 			}else if($('#statsOption').val() == 'statsMonth'){
+				$(location).attr('href', '/admin/monthAvgExpenditure.jsp?stats=month')
 			}
 		})
 	

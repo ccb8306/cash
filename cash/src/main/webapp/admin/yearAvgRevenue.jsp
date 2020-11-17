@@ -45,6 +45,8 @@
 				var chart = new Chart(ctx, chartData);
 			}
 		});
+
+		
 	});
 </script>
 </head>

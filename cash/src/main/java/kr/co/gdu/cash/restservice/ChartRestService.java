@@ -44,4 +44,41 @@ public class ChartRestService {
 	public List<Map<String, Object>> getYearTotalProfit(){
 		return chartRestMapper.selectYearTotalProfit();
 	}
+	
+
+	
+	// 연도 가져오기
+	public List<Integer> getYears(){
+		return chartRestMapper.selectYears();
+	}
+	// 월별 평균 수입
+	public List<Map<String, Object>> getMonthAvgRevenue(int year){
+		return chartRestMapper.selectMonthAvgRevenue(year);
+	}
+	
+	// 월별 평균 지출
+	public List<Map<String, Object>> getMonthAvgExpenditure(int year){
+		return chartRestMapper.selectMonthAvgExpenditure(year);
+	}
+	
+	// 월별 평균 수익
+	public List<Map<String, Object>> getMonthAvgProfit(int year){
+		return chartRestMapper.selectMonthAvgProfit(year);
+	}
+	
+	
+	// 월별 총 수입
+	public List<Map<String, Object>> getMonthTotalRevenue(int year){
+		return chartRestMapper.selectMonthTotalRevenue(year);
+	}
+	
+	// 월별 총 지출
+	public List<Map<String, Object>> getMonthTotalExpenditure(int year){
+		return chartRestMapper.selectMonthTotalExpenditure(year);
+	}
+	
+	// 월별 총 수익
+	public List<Map<String, Object>> getMonthTotalProfit(int year){
+		return chartRestMapper.selectMonthTotalProfit(year);
+	}
 }

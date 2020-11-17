@@ -51,65 +51,72 @@
 	</select>
 	
 	<!-- 월별 -->
+	<!-- 연도 가져오기 -->
+	<select id="selectYears" resultType="int">
+		SELECT 
+			DISTINCT YEAR(cashbook_date) year
+		FROM cashbook 
+		ORDER BY YEAR(cashbook_date) ASC
+	</select>
 	<!-- 월별 평균 수입 -->
 	<select id="selectMonthAvgRevenue" resultType="java.util.Map" parameterType="int">
-	SELECT 
-		MONTH(cashbook_date) month, 
-		AVG(cashbook_price) revenue
-	FROM cashbook
-	WHERE cashbook_kind='수입' AND YEAR(cashbook_date) = #{year}
-	GROUP BY MONTH(cashbook_date)
+		SELECT 
+			MONTH(cashbook_date) month, 
+			AVG(cashbook_price) revenue
+		FROM cashbook
+		WHERE cashbook_kind='수입' AND YEAR(cashbook_date) = #{year}
+		GROUP BY MONTH(cashbook_date)
 	</select>
 	
 	<!-- 월별 평균 지출 -->
 	<select id="selectMonthAvgExpenditure" resultType="java.util.Map" parameterType="int">
-	SELECT 
-		MONTH(cashbook_date) month, 
-		AVG(cashbook_price) expenditure
-	FROM cashbook
-	WHERE cashbook_kind='지출' AND YEAR(cashbook_date) = #{year}
-	GROUP BY MONTH(cashbook_date)
+		SELECT 
+			MONTH(cashbook_date) month, 
+			AVG(cashbook_price) expenditure
+		FROM cashbook
+		WHERE cashbook_kind='지출' AND YEAR(cashbook_date) = #{year}
+		GROUP BY MONTH(cashbook_date)
 	</select>
 	
 	<!-- 월별 평균 수익(수입-지출) -->
 	<select id="selectMonthAvgProfit" resultType="java.util.Map" parameterType="int">
-	SELECT 
-		MONTH(cashbook_date) month, 
-		AVG((case when cashbook_kind='수입' then cashbook_price ELSE 0 END)
-			-(case when cashbook_kind='지출' then cashbook_price ELSE 0 END)) profit
-	FROM cashbook
-	WHERE cashbook_kind='지출' AND YEAR(cashbook_date) = #{year}
-	GROUP BY MONTH(cashbook_date)
+		SELECT 
+			MONTH(cashbook_date) month, 
+			AVG((case when cashbook_kind='수입' then cashbook_price ELSE 0 END)
+				-(case when cashbook_kind='지출' then cashbook_price ELSE 0 END)) profit
+		FROM cashbook
+		WHERE cashbook_kind='지출' AND YEAR(cashbook_date) = #{year}
+		GROUP BY MONTH(cashbook_date)
 	</select>
 	
 	<!-- 월별 총 수입 -->
 	<select id="selectMonthTotalRevenue" resultType="java.util.Map" parameterType="int">
-	SELECT 
-		MONTH(cashbook_date) month, 
-		AVG(cashbook_price) revenue
-	FROM cashbook
-	WHERE cashbook_kind='수입' AND YEAR(cashbook_date) = #{year}
-	GROUP BY MONTH(cashbook_date)
+		SELECT 
+			MONTH(cashbook_date) month, 
+			SUM(cashbook_price) revenue
+		FROM cashbook
+		WHERE cashbook_kind='수입' AND YEAR(cashbook_date) = #{year}
+		GROUP BY MONTH(cashbook_date)
 	</select>
 	
 	<!-- 월별 총 지출 -->
 	<select id="selectMonthTotalExpenditure" resultType="java.util.Map" parameterType="int">
-	SELECT 
-		MONTH(cashbook_date) month, 
-		AVG(cashbook_price) expenditure
-	FROM cashbook
-	WHERE cashbook_kind='지출' AND YEAR(cashbook_date) = #{year}
-	GROUP BY MONTH(cashbook_date)
+		SELECT 
+			MONTH(cashbook_date) month, 
+			SUM(cashbook_price) expenditure
+		FROM cashbook
+		WHERE cashbook_kind='지출' AND YEAR(cashbook_date) = #{year}
+		GROUP BY MONTH(cashbook_date)
 	</select>
 	
 	<!-- 월별 총 수익(수입-지출) -->
 	<select id="selectMonthTotalProfit" resultType="java.util.Map" parameterType="int">
-	SELECT 
-		MONTH(cashbook_date) month, 
-		AVG((case when cashbook_kind='수입' then cashbook_price ELSE 0 END)
-			-(case when cashbook_kind='지출' then cashbook_price ELSE 0 END)) profit
-	FROM cashbook
-	WHERE cashbook_kind='지출' AND YEAR(cashbook_date) = #{year}
-	GROUP BY MONTH(cashbook_date)
+		SELECT 
+			MONTH(cashbook_date) month, 
+			SUM((case when cashbook_kind='수입' then cashbook_price ELSE 0 END)
+				-(case when cashbook_kind='지출' then cashbook_price ELSE 0 END)) profit
+		FROM cashbook
+		WHERE cashbook_kind='지출' AND YEAR(cashbook_date) = #{year}
+		GROUP BY MONTH(cashbook_date)
 	</select>
 </mapper>
