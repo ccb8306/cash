@@ -39,6 +39,7 @@
 			if($('#statsOption').val() == 'statsYear'){
 				$(location).attr('href', '${pageContext.request.contextPath}/admin/yearTotalExpenditure.jsp?stats=year')
 			}else if($('#statsOption').val() == 'statsMonth'){
+				$(location).attr('href', '${pageContext.request.contextPath}/admin/monthTotalExpenditure.jsp?stats=month')
 			}
 		})
 		
@@ -46,6 +47,7 @@
 			if($('#statsOption').val() == 'statsYear'){
 				$(location).attr('href', '${pageContext.request.contextPath}/admin/yearTotalProfit.jsp?stats=year')
 			}else if($('#statsOption').val() == 'statsMonth'){
+				$(location).attr('href', '${pageContext.request.contextPath}/admin/monthTotalProfit.jsp?stats=month')
 			}
 		})
 

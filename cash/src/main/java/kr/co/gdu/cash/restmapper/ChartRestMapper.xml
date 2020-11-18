@@ -7,23 +7,25 @@
 	<select id="selectYearAvgRevenue" resultType="java.util.Map">
 		SELECT 
 			YEAR(cashbook_date) year, 
-			AVG(cashbook_price) revenue
-		FROM cashbook WHERE cashbook_kind='수입' GROUP BY YEAR(cashbook_date);
+			SUM(cashbook_price)/12 revenue
+		FROM cashbook WHERE cashbook_kind="수입"
+		GROUP BY YEAR(cashbook_date);
 	</select>
 	<!-- 연도별 평균 지출 -->
 	<select id="selectYearAvgExpenditure" resultType="java.util.Map">
 		SELECT 
 			YEAR(cashbook_date) year, 
-			AVG(cashbook_price) expenditure
-		FROM cashbook WHERE cashbook_kind='지출' GROUP BY YEAR(cashbook_date);
+			SUM(cashbook_price)/12 expenditure
+		FROM cashbook WHERE cashbook_kind='지출'
+		GROUP BY YEAR(cashbook_date);
 	</select>
 	<!-- 연도별 평균 수익 (수입 - 지출) -->
 	<select id="selectYearAvgProfit" resultType="java.util.Map">
 		SELECT 
 			YEAR(cashbook_date) year, 
-			AVG((case when cashbook_kind='수입' then cashbook_price ELSE 0 END)
-			-(case when cashbook_kind='지출' then cashbook_price ELSE 0 END)) profit
-		FROM cashbook 
+			SUM(case when cashbook_kind='수입' then cashbook_price ELSE 0 END)/12
+			- SUM(case when cashbook_kind='지출' then cashbook_price ELSE 0 END)/12 profit
+		FROM cashbook
 		GROUP BY YEAR(cashbook_date);
 	</select>
 	<!-- 연도별 총 수입 -->

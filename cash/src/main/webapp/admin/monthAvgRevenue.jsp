@@ -29,6 +29,7 @@
 		
 		// 연도 변경시 해당 연도의 월별 결과 출력
 		$('#yearList').change(function(){
+			console.log($('#yearList option:selected').val());
 			let chartData = {
 				type: 'radar', 
 		        data: {
@@ -51,6 +52,7 @@
 					$('#chartParent').append('<canvas id="chart"></canvas>');
 					
 					$(data).each(function(key, value) {
+						console.log(value.revenue);
 						let ranColor1 = Math.floor(Math.random()*256);
 						let ranColor2 = Math.floor(Math.random()*256);
 						let ranColor3 = Math.floor(Math.random()*256);

@@ -152,7 +152,7 @@
 	<div class="pastel-melon-250"><h2>통계</h2></div>
 	<!-- 차트 메뉴 -->
 	<div>
-		<jsp:include page="${pageContext.request.contextPath}/WEB-INF/view/include/chartMenu.jsp"></jsp:include>
+		<jsp:include page="/WEB-INF/view/include/chartMenu.jsp"></jsp:include>
 	</div>
 	<!-- 연도 선택 -->
 	<div id="selectYear">
