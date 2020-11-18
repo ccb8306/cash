@@ -85,7 +85,7 @@
 			AVG((case when cashbook_kind='수입' then cashbook_price ELSE 0 END)
 				-(case when cashbook_kind='지출' then cashbook_price ELSE 0 END)) profit
 		FROM cashbook
-		WHERE cashbook_kind='지출' AND YEAR(cashbook_date) = #{year}
+		WHERE YEAR(cashbook_date) = #{year}
 		GROUP BY MONTH(cashbook_date)
 	</select>
 	
@@ -116,7 +116,7 @@
 			SUM((case when cashbook_kind='수입' then cashbook_price ELSE 0 END)
 				-(case when cashbook_kind='지출' then cashbook_price ELSE 0 END)) profit
 		FROM cashbook
-		WHERE cashbook_kind='지출' AND YEAR(cashbook_date) = #{year}
+		WHERE YEAR(cashbook_date) = #{year}
 		GROUP BY MONTH(cashbook_date)
 	</select>
 </mapper>

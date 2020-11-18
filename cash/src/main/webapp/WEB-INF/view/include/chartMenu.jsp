@@ -5,44 +5,46 @@
 	$(document).ready(function(){		
 		$('#avgRevenue').click(function(){
 			if($('#statsOption').val() == 'statsYear'){
-				$(location).attr('href', '/admin/yearAvgRevenue.jsp?stats=year')
+				$(location).attr('href', '${pageContext.request.contextPath}/admin/yearAvgRevenue.jsp?stats=year')
 			}else if($('#statsOption').val() == 'statsMonth'){
-				$(location).attr('href', '/admin/monthAvgRevenue.jsp?stats=month')
+				$(location).attr('href', '${pageContext.request.contextPath}/admin/monthAvgRevenue.jsp?stats=month')
 			}
 		})
 
 		$('#avgExpenditure').click(function(){
 			if($('#statsOption').val() == 'statsYear'){
-				$(location).attr('href', '/admin/yearAvgExpenditure.jsp?stats=year')
+				$(location).attr('href', '${pageContext.request.contextPath}/admin/yearAvgExpenditure.jsp?stats=year')
 			}else if($('#statsOption').val() == 'statsMonth'){
-				$(location).attr('href', '/admin/monthAvgExpenditure.jsp?stats=month')
+				$(location).attr('href', '${pageContext.request.contextPath}/admin/monthAvgExpenditure.jsp?stats=month')
 			}
 		})
 	
 		$('#avgProfit').click(function(){
 			if($('#statsOption').val() == 'statsYear'){
-				$(location).attr('href', '/admin/yearAvgProfit.jsp?stats=year')
+				$(location).attr('href', '${pageContext.request.contextPath}/admin/yearAvgProfit.jsp?stats=year')
 			}else if($('#statsOption').val() == 'statsMonth'){
+				$(location).attr('href', '${pageContext.request.contextPath}/admin/monthAvgProfit.jsp?stats=month')
 			}
 		})
 		
 		$('#totalRevenue').click(function(){
 			if($('#statsOption').val() == 'statsYear'){
-				$(location).attr('href', '/admin/yearTotalRevenue.jsp?stats=year')
+				$(location).attr('href', '${pageContext.request.contextPath}/admin/yearTotalRevenue.jsp?stats=year')
 			}else if($('#statsOption').val() == 'statsMonth'){
+				$(location).attr('href', '${pageContext.request.contextPath}/admin/monthTotalRevenue.jsp?stats=month')
 			}
 		})
 		
 		$('#totalExpenditure').click(function(){
 			if($('#statsOption').val() == 'statsYear'){
-				$(location).attr('href', '/admin/yearTotalExpenditure.jsp?stats=year')
+				$(location).attr('href', '${pageContext.request.contextPath}/admin/yearTotalExpenditure.jsp?stats=year')
 			}else if($('#statsOption').val() == 'statsMonth'){
 			}
 		})
 		
 		$('#totalProfit').click(function(){
 			if($('#statsOption').val() == 'statsYear'){
-				$(location).attr('href', '/admin/yearTotalProfit.jsp?stats=year')
+				$(location).attr('href', '${pageContext.request.contextPath}/admin/yearTotalProfit.jsp?stats=year')
 			}else if($('#statsOption').val() == 'statsMonth'){
 			}
 		})

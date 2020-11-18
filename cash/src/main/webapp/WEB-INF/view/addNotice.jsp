@@ -6,7 +6,7 @@
 <title>Insert title here</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-<link href="/resources/cash.css" rel="stylesheet" type="text/css" />
+<link href="${pageContext.request.contextPath}/resources/cash.css" rel="stylesheet" type="text/css" />
 </head>
 <script>
 	$(document).ready(function(){
@@ -26,7 +26,7 @@
 <body>
 <!-- 배경 -->
 <div class="container-fluit main-bg">
-	<img src="/resources/image/note.jpg" class="bg-img">
+	<img src="${pageContext.request.contextPath}/resources/image/note.jpg" class="bg-img">
 </div>
 <!-- 메뉴 -->
 <div class="container-fluit menu-bar">
@@ -36,8 +36,8 @@
 <div class="container-fluit main-content">
 	<br>
 	<!-- 공지사항 추가 폼 -->
-	<div class="pastel-cloud-300"><h3>공지사항 수정</h3></div>
-	<form id="addNoticeForm" method="post" action="addNotice">
+	<div class="pastel-cloud-300"><h3>공지사항 작성</h3></div>
+	<form id="addNoticeForm" method="post" action="${pageContext.request.contextPath}/admin/addNotice">
 		<table class="table">
 			<tr>
 				<th>제목</th>

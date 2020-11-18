@@ -30,21 +30,49 @@
 		// 연도 변경시 해당 연도의 월별 결과 출력
 		$('#yearList').change(function(){
 			let chartData = {
-				type: 'radar', 
+				type: 'line', 
 		        data: {
 		           labels:[],
 		           datasets:[{
-		              label:'월별 평균 수입',
+		              label:'월별 총 수입',
 		              backgroundColor: [],
-		              borderColor: 'rgb(00, 255, 255)',
+		              borderColor: [],
 		                 data:[],
 		                 borderWidth: 1
-		           }]
+		           }],
+		           options: {
+						responsive: true,
+						title: {
+							display: true,
+							text: 'Chart.js Line Chart - Stacked Area'
+						},
+						tooltips: {
+							mode: 'index',
+						},
+						hover: {
+							mode: 'index'
+						},
+						scales: {
+							xAxes: [{
+								scaleLabel: {
+									display: true,
+									labelString: 'Month'
+								}
+							}],
+							yAxes: [{
+								stacked: true,
+								scaleLabel: {
+									display: true,
+									labelString: 'Value'
+								}
+							}]
+						}
+		      		}
 		        }
 			};
 			
 			$.ajax({
-				url:'${pageContext.request.contextPath}/admin/monthAvgRevenue/' + $('#yearList option:selected').val(),
+				url:'${pageContext.request.contextPath}/admin/monthTotalRevenue/' + $('#yearList option:selected').val(),
 				type:'get',
 				success:function(data){
 					$('#chartParent').empty();
@@ -54,9 +82,10 @@
 						let ranColor1 = Math.floor(Math.random()*256);
 						let ranColor2 = Math.floor(Math.random()*256);
 						let ranColor3 = Math.floor(Math.random()*256);
-						chartData.data.labels.push(value.month+"월 : " + value.revenue);
+						chartData.data.labels.push(value.month+"월");
 						chartData.data.datasets[0].data.push(value.revenue);
-						chartData.data.datasets[0].backgroundColor.push("rgba(" + ranColor1 +  ", "+ ranColor2 + ", " + ranColor3 + ", 0.2)");
+						chartData.data.datasets[0].backgroundColor.push("rgba(" + ranColor1 +  ", "+ ranColor2 + ", " + ranColor3 + ", 0.4)");
+						chartData.data.datasets[0].borderColor.push("rgb(" + ranColor1 +  ", "+ ranColor2 + ", " + ranColor3 + ")");
 						
 					});
 					

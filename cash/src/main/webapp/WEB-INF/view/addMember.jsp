@@ -7,10 +7,10 @@
 <title>Insert title here</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-<link href="/resources/cash.css" rel="stylesheet" type="text/css" />
+<link href="${pageContext.request.contextPath}/resources/cash.css" rel="stylesheet" type="text/css" />
 <script>
 	$(document).ready(function(){
-		$('#addMemberBtn').click(function(){
+		$('#addMemberSubmitBtn').click(function(){
 			if($('#id').val().length < 1){
 				alert('아이디를 입력해 주세요.');
 				return
@@ -38,7 +38,11 @@
 <body>
 <!-- 배경 -->
 <div class="container-fluit main-bg">
-	<img src="/resources/image/note.jpg" class="bg-img">
+	<img src="${pageContext.request.contextPath}/resources/image/note.jpg" class="bg-img">
+</div>
+<!-- 메뉴 -->
+<div class="container-fluit menu-bar">
+	<jsp:include page="/WEB-INF/view/include/menu.jsp"></jsp:include>
 </div>
 <!-- 본문 -->
 <div class="container-fluit main-content">
@@ -49,7 +53,7 @@
 		<div class="pastel-yellow-300"><h2>Add Member</h2></div>
 	</div>
 	<div class="container" style="width:50%">	
-		<form id="addMemberForm" method="post" action="/admin/addMember">
+		<form id="addMemberForm" method="post" action="${pageContext.request.contextPath}/admin/addMember">
 			<table class="table">
 				<tr>
 					<td>ID : </td><td><input class="form-control" type="text" name="id" id="id"></td>
@@ -58,10 +62,7 @@
 					<td>PW : </td><td><input class="form-control" type="password" name="pw" id="pw"></td>
 				</tr>
 				<tr>
-					<td colspan="2"><button type="button" class="btn btn-block btn-outline-warning" id="addMemberBtn">Add</button></td>
-				</tr>
-				<tr>
-					<td colspan="2"><a class="btn btn-outline-primary btn-block" href="/admin/index">HOME</a></td>
+					<td colspan="2"><button type="button" class="btn btn-block btn-outline-warning" id="addMemberSubmitBtn">Add</button></td>
 				</tr>
 			</table>
 		</form>

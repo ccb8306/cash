@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-<link href="/resources/cash.css" rel="stylesheet" type="text/css" />
+<link href="${pageContext.request.contextPath}/resources/cash.css" rel="stylesheet" type="text/css" />
 <script>
 	$(document).ready(function(){
 		$('#loginBtn').click(function(){
@@ -19,7 +19,7 @@
 <body>
 <!-- 배경 -->
 <div class="container-fluit main-bg">
-	<img src="/resources/image/note.jpg" class="bg-img">
+	<img src="${pageContext.request.contextPath}/resources/image/note.jpg" class="bg-img">
 </div>
 <!-- 본문 -->
 <div class="container-fluit main-content">
@@ -27,10 +27,10 @@
 	
 	<!-- 로그인 -->
 	<div style="text-align:center">
-		<img src="/resources/image/login.png" width="60%">
+		<img src="${pageContext.request.contextPath}/resources/image/login.png" width="60%">
 	</div>
 	<div class="container" style="width:50%">	
-		<form id="loginForm" method="post" action="/login">
+		<form id="loginForm" method="post" action="${pageContext.request.contextPath}/login">
 			<table class="table">
 				<tr>
 					<td>ID : </td><td><input class="form-control" type="text" name="id" id="id"></td>

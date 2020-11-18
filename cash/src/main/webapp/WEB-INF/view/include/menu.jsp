@@ -15,25 +15,25 @@
 		}
 			
 		$("#homeBtn").click(function() {
-			$(location).attr('href', '/admin/index')
+			$(location).attr('href', '${pageContext.request.contextPath}/admin/index')
 		});
 		$("#cashBtn").click(function() {
-			$(location).attr('href', '/admin/cashbookByMonth/now/-1/-1')
+			$(location).attr('href', '${pageContext.request.contextPath}/admin/cashbookByMonth/now/-1/-1')
 		});
 		$("#cashbookListBtn").click(function() {
-			$(location).attr('href', '/admin/cashbookList/1')
+			$(location).attr('href', '${pageContext.request.contextPath}/admin/cashbookList/1')
 		});
 		$("#noticeBtn").click(function() {
-			$(location).attr('href', '/admin/noticeList/1')
+			$(location).attr('href', '${pageContext.request.contextPath}/admin/noticeList/1')
 		});
 		$("#cashStatsBtn").click(function() {
-			$(location).attr('href', '/admin/yearAvgRevenue.jsp?stats=year')
+			$(location).attr('href', '${pageContext.request.contextPath}/admin/yearAvgRevenue.jsp?stats=year')
 		});
 		$("#addMemberBtn").click(function() {
-			$(location).attr('href', '/admin/addMember')
+			$(location).attr('href', '${pageContext.request.contextPath}/admin/addMember')
 		});
 		$("#loginoutBtn").click(function() {
-			$(location).attr('href', '/admin/logout')
+			$(location).attr('href', '${pageContext.request.contextPath}/admin/logout')
 		});
 	});
 </script>

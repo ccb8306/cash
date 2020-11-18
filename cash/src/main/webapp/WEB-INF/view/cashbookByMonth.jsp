@@ -8,7 +8,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-<link href="/resources/cash.css" rel="stylesheet" type="text/css" />
+<link href="${pageContext.request.contextPath}/resources/cash.css" rel="stylesheet" type="text/css" />
 <script>
 	$(document).ready(function(){
 		for(let i = 1; i <= ${lastDay+(firstDayOfWeek-1)}; i++){
@@ -25,7 +25,7 @@
 <body>
 <!-- 배경 -->
 <div class="container-fluit main-bg">
-	<img src="/resources/image/note.jpg" class="bg-img">
+	<img src="${pageContext.request.contextPath}/resources/image/note.jpg" class="bg-img">
 </div>
 <!-- 메뉴 -->
 <div class="container-fluit menu-bar">
@@ -38,9 +38,9 @@
 	<div style="width:250px; margin:0 auto">
 		<div class="ml-a pastel-peach-250">
 			<div class="row">
-			<div class=""><h3><a class="color-red" href="/admin/cashbookByMonth/pre/${currentYear}/${currentMonth}"><i class='fas fa-minus' style='font-size:35px;color:red'></i></a></h3></div>
+			<div class=""><h3><a class="color-red" href="${pageContext.request.contextPath}/admin/cashbookByMonth/pre/${currentYear}/${currentMonth}"><i class='fas fa-minus' style='font-size:35px;color:red'></i></a></h3></div>
 			<div class="ml-a"><h3>&nbsp; ${currentYear}년 ${currentMonth} 월 &nbsp;</h3></div>
-			<div class="ml-a"><h3><a class="color-red" href="/admin/cashbookByMonth/next/${currentYear}/${currentMonth}"><i class='fas fa-plus' style='font-size:35px;color:red'></i></a></h3></div>
+			<div class="ml-a"><h3><a class="color-red" href="${pageContext.request.contextPath}/admin/cashbookByMonth/next/${currentYear}/${currentMonth}"><i class='fas fa-plus' style='font-size:35px;color:red'></i></a></h3></div>
 			</div>
 		</div>
 	</div>
@@ -76,7 +76,7 @@
 						<c:if test="${i-(firstDayOfWeek-1) > 0}">
 							<td style="width:14%;">
 								<div>
-									<a id="day${i}" href="/admin/cashbookByDay/now/${currentYear}/${currentMonth}/${i-(firstDayOfWeek-1)}" style="color:black">${i-(firstDayOfWeek-1)}</a>
+									<a id="day${i}" href="${pageContext.request.contextPath}/admin/cashbookByDay/now/${currentYear}/${currentMonth}/${i-(firstDayOfWeek-1)}" style="color:black">${i-(firstDayOfWeek-1)}</a>
 								</div>
 								<c:forEach var="c" items="${cashList}">
 									<c:if test="${i-(firstDayOfWeek-1) == c.day}">

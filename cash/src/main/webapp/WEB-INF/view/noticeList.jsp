@@ -7,12 +7,12 @@
 <title>Insert title here</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-<link href="/resources/cash.css" rel="stylesheet" type="text/css" />
+<link href="${pageContext.request.contextPath}/resources/cash.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 <!-- 배경 -->
 <div class="container-fluit main-bg">
-	<img src="/resources/image/note.jpg" class="bg-img">
+	<img src="${pageContext.request.contextPath}/resources/image/note.jpg" class="bg-img">
 </div>
 <!-- 메뉴 -->
 <div class="container-fluit menu-bar">
@@ -28,7 +28,7 @@
 				<div class="pastel-cloud-300"><h2>공지사항</h2></div>
 			</div>
 			<div class="ml-a mt-100">
-				<a href="/admin/addNotice" class="btn btn-outline-primary">공지사항 작성</a>
+				<a href="${pageContext.request.contextPath}/admin/addNotice" class="btn btn-outline-primary">공지사항 작성</a>
 			</div>
 		</div>
 		<table class="table">
@@ -43,7 +43,7 @@
 				<c:forEach var="n" items="${noticeList}">
 					<tr>
 						<td>${n.noticeId }</td>
-						<td><a href="/admin/noticeOne/${n.noticeId }">${n.noticeTitle }</a></td>
+						<td><a href="${pageContext.request.contextPath}/admin/noticeOne/${n.noticeId }">${n.noticeTitle }</a></td>
 						<td>${n.noticeDate }</td>
 					</tr>
 				</c:forEach>
@@ -58,8 +58,8 @@
 			<!-- other : 현재 페이지가 1일 시 -->
 			<c:choose>
 				<c:when test="${currentPage > '1'}">
-					<li class="page-item"><a class="page-link" href="/admin/noticeList/1">처음</a></li>
-					<li class="page-item"><a class="page-link" href="/admin/noticeList/${currentPage-1}">이전</a></li>
+					<li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/admin/noticeList/1">처음</a></li>
+					<li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/admin/noticeList/${currentPage-1}">이전</a></li>
 				</c:when>
 				<c:otherwise>
 					<li class="page-item disabled"><a class="page-link">처음</a></li>		
@@ -72,8 +72,8 @@
 			<!-- other : 현재 페이지가 마지막 페이지 일 시 -->
 			<c:choose>
 				<c:when test="${currentPage < endPage}">
-					<li class="page-item"><a class="page-link" href="/admin/noticeList/${currentPage+1}">다음</a></li>
-					<li class="page-item"><a class="page-link" href="/admin/noticeList/${endPage}">맨끝</a></li>
+					<li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/admin/noticeList/${currentPage+1}">다음</a></li>
+					<li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/admin/noticeList/${endPage}">맨끝</a></li>
 				</c:when>
 				<c:otherwise>		
 					<li class="page-item disabled"><a class="page-link">다음</a></li>		

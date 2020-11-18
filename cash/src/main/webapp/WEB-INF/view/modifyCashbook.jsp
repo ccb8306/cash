@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-<link href="/resources/cash.css" rel="stylesheet" type="text/css" />
+<link href="${pageContext.request.contextPath}/resources/cash.css" rel="stylesheet" type="text/css" />
 <script>
 	$(document).ready(function(){
 		$('#modifyCashbookBtn').click(function(){
@@ -27,7 +27,7 @@
 <body>
 <!-- 배경 -->
 <div class="container-fluit main-bg">
-	<img src="/resources/image/note.jpg" class="bg-img">
+	<img src="${pageContext.request.contextPath}/resources/image/note.jpg" class="bg-img">
 </div>
 <!-- 메뉴 -->
 <div class="container-fluit menu-bar">
@@ -37,7 +37,7 @@
 <div class="container-fluit main-content">
 	<!-- 내용 수정 --><br>
 	<div>
-		<form id="modifyCashbookForm" method="post" action="/admin/modifyCashbook">
+		<form id="modifyCashbookForm" method="post" action="${pageContext.request.contextPath}/admin/modifyCashbook">
 			<input type="hidden" name="currentYear" value="${currentYear}">
 			<input type="hidden" name="currentMonth" value="${currentMonth}">
 			<input type="hidden" name="currentDay" value="${currentDay}">

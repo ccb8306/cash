@@ -7,12 +7,12 @@
 <title>Insert title here</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-<link href="/resources/cash.css" rel="stylesheet" type="text/css" />
+<link href="${pageContext.request.contextPath}/resources/cash.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 <!-- 배경 -->
 <div class="container-fluit main-bg">
-	<img src="/resources/image/note.jpg" class="bg-img">
+	<img src="${pageContext.request.contextPath}/resources/image/note.jpg" class="bg-img">
 </div>
 <!-- 메뉴 -->
 <div class="container-fluit menu-bar">
@@ -24,7 +24,7 @@
 	<div>
 		<div class="pastel-yellow-300"><h2>전체 리스트</h2></div>
 	</div>
-	<a href="/admin/cashbookListExcel">[전체 리스트를 엑셀 파일로 다운로드]</a>
+	<a href="${pageContext.request.contextPath}/admin/cashbookListExcel">[전체 리스트를 엑셀 파일로 다운로드]</a>
 	<div>
 		<table class="table">
 			<thead>
@@ -63,8 +63,8 @@
 			<!-- other : 현재 페이지가 1일 시 -->
 			<c:choose>
 				<c:when test="${currentPage > '1'}">
-					<li class="page-item"><a class="page-link" href="/admin/cashbookList/1">처음</a></li>
-					<li class="page-item"><a class="page-link" href="/admin/cashbookList/${currentPage-1}">이전</a></li>
+					<li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/admin/cashbookList/1">처음</a></li>
+					<li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/admin/cashbookList/${currentPage-1}">이전</a></li>
 				</c:when>
 				<c:otherwise>
 					<li class="page-item disabled"><a class="page-link">처음</a></li>		
@@ -77,8 +77,8 @@
 			<!-- other : 현재 페이지가 마지막 페이지 일 시 -->
 			<c:choose>
 				<c:when test="${currentPage < endPage}">
-					<li class="page-item"><a class="page-link" href="/admin/cashbookList/${currentPage+1}">다음</a></li>
-					<li class="page-item"><a class="page-link" href="/admin/cashbookList/${endPage}">맨끝</a></li>
+					<li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/admin/cashbookList/${currentPage+1}">다음</a></li>
+					<li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/admin/cashbookList/${endPage}">맨끝</a></li>
 				</c:when>
 				<c:otherwise>		
 					<li class="page-item disabled"><a class="page-link">다음</a></li>		

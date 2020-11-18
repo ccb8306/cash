@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-<link href="/resources/cash.css" rel="stylesheet" type="text/css" />
+<link href="${pageContext.request.contextPath}/resources/cash.css" rel="stylesheet" type="text/css" />
 <script>
 	$(document).ready(function(){
 		$('#addCashbookBtn').click(function(){
@@ -34,7 +34,7 @@
 <body>
 <!-- 배경 -->
 <div class="container-fluit main-bg">
-	<img src="/resources/image/note.jpg" class="bg-img">
+	<img src="${pageContext.request.contextPath}/resources/image/note.jpg" class="bg-img">
 </div>
 <!-- 메뉴 -->
 <div class="container-fluit menu-bar">
@@ -46,9 +46,9 @@
 	<div style="width:300px; margin:0 auto">
 		<div class="pastel-peach-300">
 			<div class="row">
-			<div class=""><h3><a class="color-red" href="/admin/cashbookByDay/pre/${currentYear }/${currentMonth }/${currentDay }">[-]</a></h3></div>
+			<div class=""><h3><a class="color-red" href="${pageContext.request.contextPath}/admin/cashbookByDay/pre/${currentYear }/${currentMonth }/${currentDay }">[-]</a></h3></div>
 			<div class="ml-a"><h3>&nbsp; ${currentYear }년 ${currentMonth }월 ${currentDay }일 &nbsp;</h3></div>
-			<div class="ml-a"><h3><a class="color-red" href="/admin/cashbookByDay/next/${currentYear }/${currentMonth }/${currentDay }">[+]</a></h3></div>
+			<div class="ml-a"><h3><a class="color-red" href="${pageContext.request.contextPath}/admin/cashbookByDay/next/${currentYear }/${currentMonth }/${currentDay }">[+]</a></h3></div>
 			</div>
 		</div>
 	</div>
@@ -73,8 +73,8 @@
 						<td>${c.categoryName}</td>
 						<td><script>document.write(numberWithCommas(${c.cashbookPrice}))</script></td>
 						<td>${c.cashbookContent}</td>
-						<td><a class="btn btn-outline-success" href="/admin/modifyCashbook/${c.cashbookId}/${currentYear }/${currentMonth }/${currentDay }">수정</a></td>
-						<td><a class="btn btn-outline-danger" href="/admin/removeCashbook/${c.cashbookId}/${currentYear }/${currentMonth }/${currentDay }">삭제</a></td>
+						<td><a class="btn btn-outline-success" href="${pageContext.request.contextPath}/admin/modifyCashbook/${c.cashbookId}/${currentYear }/${currentMonth }/${currentDay }">수정</a></td>
+						<td><a class="btn btn-outline-danger" href="${pageContext.request.contextPath}/admin/removeCashbook/${c.cashbookId}/${currentYear }/${currentMonth }/${currentDay }">삭제</a></td>
 					</tr>
 				</c:forEach>
 			</tbody>
@@ -82,7 +82,7 @@
 	</div>
 	<!-- 내용 추가 -->
 	<div style="margin-top:50px">
-		<form id="addCashbookForm" method="post" action="/admin/addCashbook">
+		<form id="addCashbookForm" method="post" action="${pageContext.request.contextPath}/admin/addCashbook">
 			<input type="hidden" name="cashbookDate" value="${currentYear }-${currentMonth }-${currentDay }">
 			<input type="hidden" name="currentYear" value="${currentYear }">
 			<input type="hidden" name="currentMonth" value="${currentMonth }">

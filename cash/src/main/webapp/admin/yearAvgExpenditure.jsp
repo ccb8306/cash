@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <title>Insert title here</title>
 
-<link href="/resources/cash.css" rel="stylesheet" type="text/css" />
+<link href="${pageContext.request.contextPath}/resources/cash.css" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -26,7 +26,7 @@
 		};
 		
 		$.ajax({
-			url:'/admin/yearAvgExpenditure',
+			url:'${pageContext.request.contextPath}/admin/yearAvgExpenditure',
 			type:'get',
 			success:function(data){
 				console.log(data);
@@ -50,7 +50,7 @@
 <body>
 <!-- 배경 -->
 <div class="container-fluit main-bg">
-	<img src="/resources/image/note.jpg" class="bg-img">
+	<img src="${pageContext.request.contextPath}/resources/image/note.jpg" class="bg-img">
 </div>
 <!-- 메뉴 -->
 <div class="container-fluit menu-bar" id="menubar">

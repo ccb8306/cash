@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-<link href="/resources/cash.css" rel="stylesheet" type="text/css" />
+<link href="${pageContext.request.contextPath}/resources/cash.css" rel="stylesheet" type="text/css" />
 <script>
 	$(document).ready(function(){
 		$('#modifyNoticeBtn').click(function(){
@@ -27,7 +27,7 @@
 <body>
 <!-- 배경 -->
 <div class="container-fluit main-bg">
-	<img src="/resources/image/note.jpg" class="bg-img">
+	<img src="${pageContext.request.contextPath}/resources/image/note.jpg" class="bg-img">
 </div>
 <!-- 메뉴 -->
 <div class="container-fluit menu-bar">
@@ -38,7 +38,7 @@
 	<br>
 	<!-- 공지사항 수정 -->
 	<div class="pastel-cloud-300"><h3>공지사항 수정</h3></div>
-	<form id="modifyNoticeForm" method="post" action="/admin/modifyNotice">
+	<form id="modifyNoticeForm" method="post" action="${pageContext.request.contextPath}/admin/modifyNotice">
 		<input type="hidden" value="${notice.noticeId}" name="noticeId">
 		<table class="table">
 			<tr>

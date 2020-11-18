@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <title>Insert title here</title>
 
-<link href="/resources/cash.css" rel="stylesheet" type="text/css" />
+<link href="${pageContext.request.contextPath}/resources/cash.css" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -14,7 +14,7 @@
 	$(document).ready(function(){
 		// 연도 리스트 가져오기
 		$.ajax({
-			url: '/admin/yearList',
+			url: '${pageContext.request.contextPath}/admin/yearList',
 			type:'get',
 			success: function(data1){
 				let html = `<option value="-1">연도 선택</option>`;
@@ -35,14 +35,12 @@
 
 			utils.srand(110);
 
-			let ranColor1 = Math.floor(Math.random()*256);
-			let ranColor2 = Math.floor(Math.random()*256);
-			let ranColor3 = Math.floor(Math.random()*256);
-
 			
 			let data = {
+				labels: [],
 				datasets: [{	
 					backgroundColor : [],
+					borderColor : [],
 					data: []
 				}]
 			};
@@ -51,19 +49,23 @@
 			$('#chartParent').append('<canvas id="chart"></canvas>');
 			
 			$.ajax({
-				url:'/admin/monthAvgExpenditure/' + $('#yearList option:selected').val(),
+				url:'${pageContext.request.contextPath}/admin/monthAvgExpenditure/' + $('#yearList option:selected').val(),
 				type:'get',
 				success:function(data1){
 					
 					$(data1).each(function(key, value) {
+						let ranColor1 = Math.floor(Math.random()*256);
+						let ranColor2 = Math.floor(Math.random()*256);
+						let ranColor3 = Math.floor(Math.random()*256);
 						//var m = value.month + '월'
 						data.datasets[0].data.push({
 							x: value.month,
 							y: value.expenditure,
 							v: utils.rand(0, 1000)
 						});		
-						data.datasets[0].backgroundColor.push("rgba(" + ranColor1 +  ", "+ ranColor2 + ", " + ranColor3 + ", 0.2)");
-						data.labels.push(value.month+"월 : " + value.expenditure);		
+						data.datasets[0].backgroundColor.push("rgba(" + ranColor1 +  ", "+ ranColor2 + ", " + ranColor3 + ", 0.35)");
+						data.datasets[0].borderColor.push("rgba(" + ranColor1 +  ", "+ ranColor2 + ", " + ranColor3 + ", 0.6)");
+						data.labels.push(value.month);		
 					});
 					chart.update();
 					
@@ -79,7 +81,7 @@
 				elements: {
 					point: {
 						borderWidth: function(context) {
-							return Math.min(Math.max(1, context.datasetIndex + 1), 8);
+							return Math.min(Math.max(1, context.datasetIndex + 2), 10);
 						},
 
 						hoverBackgroundColor: 'transparent',
@@ -138,7 +140,7 @@
 <body>
 <!-- 배경 -->
 <div class="container-fluit main-bg">
-	<img src="/resources/image/note.jpg" class="bg-img">
+	<img src="${pageContext.request.contextPath}/resources/image/note.jpg" class="bg-img">
 </div>
 <!-- 메뉴 -->
 <div class="container-fluit menu-bar" id="menubar">
@@ -150,7 +152,7 @@
 	<div class="pastel-melon-250"><h2>통계</h2></div>
 	<!-- 차트 메뉴 -->
 	<div>
-		<jsp:include page="/WEB-INF/view/include/chartMenu.jsp"></jsp:include>
+		<jsp:include page="${pageContext.request.contextPath}/WEB-INF/view/include/chartMenu.jsp"></jsp:include>
 	</div>
 	<!-- 연도 선택 -->
 	<div id="selectYear">
@@ -160,7 +162,7 @@
 	</div>
 	<!-- 차트1 -->
 	<br>
-	<div id="chartParent" style="width:550px"></div>
+	<div id="chartParent" style="width:650px"></div>
 	<!-- 테이블 -->
 	<div>
 	</div>
