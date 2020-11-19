@@ -27,7 +27,7 @@
 			$(location).attr('href', '${pageContext.request.contextPath}/admin/noticeList/1')
 		});
 		$("#cashStatsBtn").click(function() {
-			$(location).attr('href', '${pageContext.request.contextPath}/admin/yearAvgRevenue.jsp?stats=year')
+			$(location).attr('href', '${pageContext.request.contextPath}/admin/yearCategoryRevenue.jsp?stats=year')
 		});
 		$("#addMemberBtn").click(function() {
 			$(location).attr('href', '${pageContext.request.contextPath}/admin/addMember')

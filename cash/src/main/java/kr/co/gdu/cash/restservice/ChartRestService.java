@@ -8,25 +8,34 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import kr.co.gdu.cash.restmapper.ChartRestMapper;
+import kr.co.gdu.cash.vo.Category;
 
 @Service
 @Transactional
 public class ChartRestService {
 	@Autowired ChartRestMapper chartRestMapper; 
-	
-	// 연도별 평균 수입
-	public List<Map<String, Object>> getYearAvgRevenue(){
-		return chartRestMapper.selectYearAvgRevenue();
+	// 카테고리 리스트
+	public List<Category> getCategoryList(String cashbookKind){
+		return chartRestMapper.selectCategoryList(cashbookKind);
 	}
 	
-	// 연도별 평균 지출
-	public List<Map<String, Object>> getYearAvgExpenditure(){
-		return chartRestMapper.selectYearAvgExpenditure();
+	// 연도별 카테고리별 수입
+	public List<Map<String, Object>> getYearCategoryRevenue(String categoryName){
+		return chartRestMapper.selectYearCategoryRevenue(categoryName);
 	}
 	
-	// 연도별 평균 수익
-	public List<Map<String, Object>> getYearAvgProfit(){
-		return chartRestMapper.selectYearAvgProfit();
+	// 연도별 카테고리별 지출
+	public List<Map<String, Object>> getYearCategoryExpenditure(String categoryName){
+		return chartRestMapper.selectYearCategoryExpenditure(categoryName);
+	}
+	
+	// 연도별 최소 최대 수입
+	public List<Map<String, Object>> getYearMinMaxRevenue(){
+		return chartRestMapper.selectYearMinMaxRevenue();
+	}
+	// 연도별 최소 최대 지출
+	public List<Map<String, Object>> getYearMinMaxExpenditure(){
+		return chartRestMapper.selectYearMinMaxExpenditure();
 	}
 	
 	
@@ -51,19 +60,23 @@ public class ChartRestService {
 	public List<Integer> getYears(){
 		return chartRestMapper.selectYears();
 	}
-	// 월별 평균 수입
-	public List<Map<String, Object>> getMonthAvgRevenue(int year){
-		return chartRestMapper.selectMonthAvgRevenue(year);
+	// 월별 카테고리별 수입
+	public List<Map<String, Object>> getMonthCategoryRevenue(Map<String, Object> map){
+		return chartRestMapper.selectMonthCategoryRevenue(map);
 	}
 	
-	// 월별 평균 지출
-	public List<Map<String, Object>> getMonthAvgExpenditure(int year){
-		return chartRestMapper.selectMonthAvgExpenditure(year);
+	// 월별 카테고리별 지출
+	public List<Map<String, Object>> getMonthCategoryExpenditure(Map<String, Object> map){
+		return chartRestMapper.selectMonthCategoryExpenditure(map);
 	}
-	
-	// 월별 평균 수익
-	public List<Map<String, Object>> getMonthAvgProfit(int year){
-		return chartRestMapper.selectMonthAvgProfit(year);
+
+	// 월별 최소 최대 수입
+	public List<Map<String, Object>> getMonthMinMaxRevenue(int year){
+		return chartRestMapper.selectMonthMinMaxRevenue(year);
+	}
+	// 월별 최소 최대 지출
+	public List<Map<String, Object>> getMonthMinMaxExpenditure(int year){
+		return chartRestMapper.selectMonthMinMaxExpenditure(year);
 	}
 	
 	

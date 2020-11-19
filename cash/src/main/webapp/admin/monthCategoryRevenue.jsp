@@ -27,8 +27,43 @@
 			}
 		})
 		
-		// 연도 변경시 해당 연도의 월별 결과 출력
+		// 카테고리 리스트 가져오기
+		$.ajax({
+			url: '${pageContext.request.contextPath}/admin/categoryList/수입',
+			type:'get',
+			success: function(data1){
+				let html = `<option value="-1">카테고리 선택</option>`;
+								
+				$(data1).each(function(key, value) {
+					html += `<option value="` + value.categoryName + `">`+ value.categoryName +`</option>`;		
+				});
+
+				html += `</select>`;
+				$('#categoryList').html(html);
+			}
+		});
+		
+		// 연도 변경시
 		$('#yearList').change(function(){
+			console.log($('#yearList option:selected').val());
+			if($('#categoryList option:selected').val() != '-1'){
+				console.log($('#categoryList option:selected').val());
+				result();
+			}
+			return;
+		});
+		// 카테고리 변경시	
+		$('#categoryList').change(function(){
+			console.log($('#categoryList option:selected').val());
+			if($('#yearList option:selected').val() != '-1'){
+				console.log($('#yearList option:selected').val());
+				result();
+			}
+			return;
+		});
+		
+		// 연도 변경시 해당 연도의 월별 결과 출력
+		function result(){
 			console.log($('#yearList option:selected').val());
 			let chartData = {
 				type: 'radar', 
@@ -45,17 +80,17 @@
 			};
 			
 			$.ajax({
-				url:'${pageContext.request.contextPath}/admin/monthAvgRevenue/' + $('#yearList option:selected').val(),
+				url:'${pageContext.request.contextPath}/admin/monthCategoryRevenue/' + $('#yearList option:selected').val() + '/' + $('#categoryList option:selected').val(),
 				type:'get',
 				success:function(data){
 					$('#chartParent').empty();
 					$('#chartParent').append('<canvas id="chart"></canvas>');
+					let ranColor1 = Math.floor(Math.random()*256);
+					let ranColor2 = Math.floor(Math.random()*256);
+					let ranColor3 = Math.floor(Math.random()*256);
 					
 					$(data).each(function(key, value) {
 						console.log(value.revenue);
-						let ranColor1 = Math.floor(Math.random()*256);
-						let ranColor2 = Math.floor(Math.random()*256);
-						let ranColor3 = Math.floor(Math.random()*256);
 						chartData.data.labels.push(value.month+"월 : " + value.revenue);
 						chartData.data.datasets[0].data.push(value.revenue);
 						chartData.data.datasets[0].backgroundColor.push("rgba(" + ranColor1 +  ", "+ ranColor2 + ", " + ranColor3 + ", 0.2)");
@@ -66,7 +101,7 @@
 					var chart = new Chart(ctx, chartData);
 				}
 			});
-		});
+		}
 		
 	});
 </script>
@@ -88,17 +123,19 @@
 	<div>
 		<jsp:include page="/WEB-INF/view/include/chartMenu.jsp"></jsp:include>
 	</div>
-	<!-- 연도 선택 -->
-	<div id="selectYear">
-		<br>
+	
+	<!-- 연도, 카테고리 선택 -->
+	<br>
+	<div class="row">
 		<select class="btn btn-outline-warning" id="yearList" name="yearList">
+		</select>
+		
+		<select class="btn btn-outline-warning" id="categoryList" name="categoryList">
 		</select>
 	</div>
 	<!-- 차트1 -->
+	<br>
 	<div id="chartParent"></div>
-	<!-- 테이블 -->
-	<div>
-	</div>
 </div>
 </body>
 </html>

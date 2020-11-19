@@ -3,27 +3,35 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
 	$(document).ready(function(){		
-		$('#avgRevenue').click(function(){
+		$('#categoryRevenue').click(function(){
 			if($('#statsOption').val() == 'statsYear'){
-				$(location).attr('href', '${pageContext.request.contextPath}/admin/yearAvgRevenue.jsp?stats=year')
+				$(location).attr('href', '${pageContext.request.contextPath}/admin/yearCategoryRevenue.jsp?stats=year')
 			}else if($('#statsOption').val() == 'statsMonth'){
-				$(location).attr('href', '${pageContext.request.contextPath}/admin/monthAvgRevenue.jsp?stats=month')
+				$(location).attr('href', '${pageContext.request.contextPath}/admin/monthCategoryRevenue.jsp?stats=month')
 			}
 		})
 
-		$('#avgExpenditure').click(function(){
+		$('#categoryExpenditure').click(function(){	
 			if($('#statsOption').val() == 'statsYear'){
-				$(location).attr('href', '${pageContext.request.contextPath}/admin/yearAvgExpenditure.jsp?stats=year')
+				$(location).attr('href', '${pageContext.request.contextPath}/admin/yearCategoryExpenditure.jsp?stats=year')
 			}else if($('#statsOption').val() == 'statsMonth'){
-				$(location).attr('href', '${pageContext.request.contextPath}/admin/monthAvgExpenditure.jsp?stats=month')
+				$(location).attr('href', '${pageContext.request.contextPath}/admin/monthCategoryExpenditure.jsp?stats=month')
 			}
 		})
 	
-		$('#avgProfit').click(function(){
+		$('#minMaxRevenue').click(function(){
 			if($('#statsOption').val() == 'statsYear'){
-				$(location).attr('href', '${pageContext.request.contextPath}/admin/yearAvgProfit.jsp?stats=year')
+				$(location).attr('href', '${pageContext.request.contextPath}/admin/yearMinMaxRevenue.jsp?stats=year')
 			}else if($('#statsOption').val() == 'statsMonth'){
-				$(location).attr('href', '${pageContext.request.contextPath}/admin/monthAvgProfit.jsp?stats=month')
+				$(location).attr('href', '${pageContext.request.contextPath}/admin/monthMinMaxRevenue.jsp?stats=month')
+			}
+		})
+		
+		$('#minMaxExpenditure').click(function(){
+			if($('#statsOption').val() == 'statsYear'){
+				$(location).attr('href', '${pageContext.request.contextPath}/admin/yearMinMaxExpenditure.jsp?stats=year')
+			}else if($('#statsOption').val() == 'statsMonth'){
+				$(location).attr('href', '${pageContext.request.contextPath}/admin/monthMinMaxExpenditure.jsp?stats=month')
 			}
 		})
 		
@@ -64,12 +72,13 @@
 				<option id="statsMonth" value="statsMonth" selected="selected">월별</option>
 			</c:if>
 	</select>
-</div>
+</div><br>
 <div>
 	<ul class="nav nav-tabs">
-  		<li class="nav-item"><a id="avgRevenue" class="nav-link">평균 수입</a></li>
-  		<li class="nav-item"><a id="avgExpenditure" class="nav-link">평균 지출</a></li>
-  		<li class="nav-item"><a id="avgProfit" class="nav-link">평균 수익</a></li>
+  		<li class="nav-item"><a id="categoryRevenue" class="nav-link">카테고리별 수입</a></li>
+  		<li class="nav-item"><a id="categoryExpenditure" class="nav-link">카테고리별 지출</a></li>
+  		<li class="nav-item"><a id="minMaxRevenue" class="nav-link">최소 최대 수입</a></li>
+  		<li class="nav-item"><a id="minMaxExpenditure" class="nav-link">최소 최대 지출</a></li>
   		<li class="nav-item"><a id="totalRevenue" class="nav-link">총 수입</a></li>
   		<li class="nav-item"><a id="totalExpenditure" class="nav-link">총 지출</a></li>
   		<li class="nav-item"><a id="totalProfit" class="nav-link">총 수익</a></li>

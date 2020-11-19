@@ -12,32 +12,61 @@
 <script>
 	$(document).ready(function(){
 		let chartData = {
-			type: 'horizontalBar', 
+			type: 'bar', 
 	        data: {
 	           labels:[],
 	           datasets:[{
-	              label:'연도별 평균 지출',
+	              label:'연도별 최소 수입',
 	              backgroundColor: [],
 	              borderColor: 'rgba(255, 255, 255, 0.5)',
 	                 data:[],
 	                 borderWidth: 1
-	           }]
-	        }
+	           },{
+		              label:'연도별 최대 수입',
+		              backgroundColor: [],
+		              borderColor: 'rgba(255, 255, 255, 0.5)',
+		                 data:[],
+		                 borderWidth: 1
+		           }]
+	        },
+        	options: {
+				title: {
+					display: true,
+				},
+				tooltips: {
+					mode: 'index',
+					intersect: false
+				},
+				responsive: true,
+				scales: {
+					xAxes: [{
+						stacked: true,
+					}],
+					yAxes: [{
+						stacked: true
+					}]
+				}
+			}
 		};
 		
 		$.ajax({
-			url:'${pageContext.request.contextPath}/admin/yearAvgExpenditure',
+			url:'${pageContext.request.contextPath}/admin/yearMinMaxRevenue',
 			type:'get',
 			success:function(data){
 				console.log(data);
 				let ranColor1 = Math.floor(Math.random()*256);
 				let ranColor2 = Math.floor(Math.random()*256);
 				let ranColor3 = Math.floor(Math.random()*256);
+				let ranColor11 = Math.floor(Math.random()*256);
+				let ranColor22 = Math.floor(Math.random()*256);
+				let ranColor33 = Math.floor(Math.random()*256);
 				
 				$(data).each(function(key, value) {
 					chartData.data.labels.push(value.year);
-					chartData.data.datasets[0].data.push(value.expenditure);
+					chartData.data.datasets[0].data.push(value.min);
 					chartData.data.datasets[0].backgroundColor.push("rgba(" + ranColor1 +  ", "+ ranColor2 + ", " + ranColor3 + ", 0.4)");
+					chartData.data.datasets[1].data.push(value.max);
+					chartData.data.datasets[1].backgroundColor.push("rgba(" + ranColor11 +  ", "+ ranColor22 + ", " + ranColor33 + ", 0.4)");
 				});
 				
 				var ctx = document.getElementById('chart').getContext('2d');

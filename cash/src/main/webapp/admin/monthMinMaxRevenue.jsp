@@ -28,7 +28,6 @@
 			}
 		})
 		
-		
 		// 연도 변경시 해당 연도의 월별 결과 출력
 		$('#yearList').change(function(){
 			var utils = Samples.utils;
@@ -39,6 +38,12 @@
 			let data = {
 				labels: [],
 				datasets: [{	
+		            label:'월별 최소 수입',
+					backgroundColor : [],
+					borderColor : [],
+					data: []
+				},{	
+		            label:'월별최대 수입',
 					backgroundColor : [],
 					borderColor : [],
 					data: []
@@ -49,23 +54,35 @@
 			$('#chartParent').append('<canvas id="chart"></canvas>');
 			
 			$.ajax({
-				url:'${pageContext.request.contextPath}/admin/monthAvgExpenditure/' + $('#yearList option:selected').val(),
+				url:'${pageContext.request.contextPath}/admin/monthMinMaxRevenue/' + $('#yearList option:selected').val(),
 				type:'get',
 				success:function(data1){
+					console.log(data1);
+					let ranColor1 = Math.floor(Math.random()*256);
+					let ranColor2 = Math.floor(Math.random()*256);
+					let ranColor3 = Math.floor(Math.random()*256);
+					let ranColor11 = Math.floor(Math.random()*256);
+					let ranColor22 = Math.floor(Math.random()*256);
+					let ranColor33 = Math.floor(Math.random()*256);
 					
 					$(data1).each(function(key, value) {
-						let ranColor1 = Math.floor(Math.random()*256);
-						let ranColor2 = Math.floor(Math.random()*256);
-						let ranColor3 = Math.floor(Math.random()*256);
 						//var m = value.month + '월'
 						data.datasets[0].data.push({
 							x: value.month,
-							y: value.expenditure,
+							y: value.min,
 							v: utils.rand(0, 1000)
 						});		
 						data.datasets[0].backgroundColor.push("rgba(" + ranColor1 +  ", "+ ranColor2 + ", " + ranColor3 + ", 0.35)");
 						data.datasets[0].borderColor.push("rgba(" + ranColor1 +  ", "+ ranColor2 + ", " + ranColor3 + ", 0.6)");
-						data.labels.push(value.month);		
+						
+						data.datasets[1].data.push({
+							x: value.month,
+							y: value.max,
+							v: utils.rand(0, 1000)
+						});		
+						data.datasets[1].backgroundColor.push("rgba(" + ranColor11 +  ", "+ ranColor22 + ", " + ranColor33 + ", 0.35)");
+						data.datasets[1].borderColor.push("rgba(" + ranColor11 +  ", "+ ranColor22 + ", " + ranColor33 + ", 0.6)");
+
 					});
 					chart.update();
 					
@@ -75,11 +92,13 @@
 
 			var options = {
 				aspectRatio: 1,
-				legend: false,
-				tooltips: false,
 
 				elements: {
 					point: {
+						title: {
+							display: true,
+						},
+						
 						borderWidth: function(context) {
 							return Math.min(Math.max(1, context.datasetIndex + 2), 10);
 						},
@@ -111,27 +130,7 @@
 				options: options
 			});
 
-			// eslint-disable-next-line no-unused-vars
-			/*function randomize() {
-				chart.data.datasets.forEach(function(dataset) {
-					dataset.data = generateData();
-				});
-				chart.update();
-			}*/
-
-			// eslint-disable-next-line no-unused-vars
-			function addDataset() {
-				chart.data.datasets.push({
-					data: generateData()
-				});
-				chart.update();
-			}
-
-			// eslint-disable-next-line no-unused-vars
-			function removeDataset() {
-				chart.data.datasets.shift();
-				chart.update();
-			}
+			
 		});
 		
 	});
@@ -155,17 +154,14 @@
 		<jsp:include page="/WEB-INF/view/include/chartMenu.jsp"></jsp:include>
 	</div>
 	<!-- 연도 선택 -->
-	<div id="selectYear">
-		<br>
+	<br>
+	<div class="row">
 		<select class="btn btn-outline-warning" id="yearList" name="yearList">
 		</select>
 	</div>
 	<!-- 차트1 -->
 	<br>
 	<div id="chartParent" style="width:650px"></div>
-	<!-- 테이블 -->
-	<div>
-	</div>
 </div>
 </body>
 </html>

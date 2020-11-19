@@ -1,5 +1,6 @@
 package kr.co.gdu.cash.restcontroller;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -11,24 +12,36 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import kr.co.gdu.cash.restservice.ChartRestService;
+import kr.co.gdu.cash.vo.Category;
 
 @RestController
 public class ChartRestController {
 	@Autowired ChartRestService chartRestService;
-	// 연도별 평균 수입
-	@GetMapping("/admin/yearAvgRevenue")
-	public List<Map<String, Object>> yearAvgRevenue() {
-		return chartRestService.getYearAvgRevenue();
+	// 카테고리 리스트
+	@GetMapping("/admin/categoryList/{cashbookKind}")
+	public List<Category> categoryList(@PathVariable(name="cashbookKind") String cashbookKind){
+		return chartRestService.getCategoryList(cashbookKind);
 	}
-	// 연도별 평균 지출
-	@GetMapping("/admin/yearAvgExpenditure")
-	public List<Map<String, Object>> yearAvgExpenditure() {
-		return chartRestService.getYearAvgExpenditure();
+	
+	// 연도별 카테고리별 수입
+	@GetMapping("/admin/yearCategoryRevenue/{categoryName}")
+	public List<Map<String, Object>> yearCategoryRevenue(@PathVariable(name="categoryName") String categoryName) {
+		return chartRestService.getYearCategoryRevenue(categoryName);
 	}
-	// 연도별 평균 수익(수입-지출)
-	@GetMapping("/admin/yearAvgProfit")
-	public List<Map<String, Object>> yearAvgProfit(){
-		return chartRestService.getYearAvgProfit();
+	// 연도별 카테고리별 지출
+	@GetMapping("/admin/yearCategoryExpenditure/{categoryName}")
+	public List<Map<String, Object>> yearCategoryExpenditure(@PathVariable(name="categoryName") String categoryName) {
+		return chartRestService.getYearCategoryExpenditure(categoryName);
+	}
+	// 연도별 최소 최대 수입
+	@GetMapping("/admin/yearMinMaxRevenue")
+	public List<Map<String, Object>> yearMinMaxRevenue(){
+		return chartRestService.getYearMinMaxRevenue();
+	}
+	// 연도별 최소 최대 지출
+	@GetMapping("/admin/yearMinMaxExpenditure")
+	public List<Map<String, Object>> yearMinMaxExpenditure(){
+		return chartRestService.getYearMinMaxExpenditure();
 	}
 	// 연도별 총 수입
 	@GetMapping("/admin/yearTotalRevenue")
@@ -51,20 +64,41 @@ public class ChartRestController {
 	public List<Integer> yearList(){
 		return chartRestService.getYears();
 	}
-	// 월별 평균 수입
-	@GetMapping("/admin/monthAvgRevenue/{year}")
-	public List<Map<String, Object>> monthAvgRevenue(@PathVariable(name="year") int year) {
-		return chartRestService.getMonthAvgRevenue(year);
+	// 월별 카테고리별 수입
+	@GetMapping("/admin/monthCategoryRevenue/{year}/{categoryName}")
+	public List<Map<String, Object>> monthCategoryRevenue(
+			@PathVariable(name="year") int year,
+			@PathVariable(name="categoryName") String categoryName) {
+		Map<String, Object> map = new HashMap<>();
+		map.put("year", year);
+		map.put("categoryName", categoryName);
+		
+		System.out.println(year + " : " + categoryName);
+		return chartRestService.getMonthCategoryRevenue(map);
 	}
-	// 월별 평균 지출
-	@GetMapping("/admin/monthAvgExpenditure/{year}")
-	public List<Map<String, Object>> monthAvgExpenditure(@PathVariable(name="year") int year) {
-		return chartRestService.getMonthAvgExpenditure(year);
+	// 월별 카테고리별 지출
+	@GetMapping("/admin/monthCategoryExpenditure/{year}/{categoryName}")
+	public List<Map<String, Object>> monthCategoryExpenditure(
+			@PathVariable(name="year") int year,
+			@PathVariable(name="categoryName") String categoryName) {
+		Map<String, Object> map = new HashMap<>();
+		map.put("year", year);
+		map.put("categoryName", categoryName);
+		
+		System.out.println(year + " : " + categoryName);
+		return chartRestService.getMonthCategoryExpenditure(map);
 	}
-	// 월별 평균 수익(수입-지출)
-	@GetMapping("/admin/monthAvgProfit/{year}")
-	public List<Map<String, Object>> monthAvgProfit(@PathVariable(name="year") int year){
-		return chartRestService.getMonthAvgProfit(year);
+	// 연도별 최소 최대 수입
+	@GetMapping("/admin/monthMinMaxRevenue/{year}")
+	public List<Map<String, Object>> monthMinMaxRevenue(
+			@PathVariable(name="year") int year){
+		return chartRestService.getMonthMinMaxRevenue(year);
+	}
+	// 연도별 최소 최대 지출
+	@GetMapping("/admin/monthMinMaxExpenditure/{year}")
+	public List<Map<String, Object>> monthMinMaxExpenditure(
+			@PathVariable(name="year") int year){
+		return chartRestService.getMonthMinMaxExpenditure(year);
 	}
 	// 월별 총 수입
 	@GetMapping("/admin/monthTotalRevenue/{year}")
