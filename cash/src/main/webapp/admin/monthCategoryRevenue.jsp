@@ -70,7 +70,7 @@
 		        data: {
 		           labels:[],
 		           datasets:[{
-		              label:'월별 평균 수입',
+		              label:'월별 카테고리별 수입',
 		              backgroundColor: [],
 		              borderColor: 'rgb(00, 255, 255)',
 		                 data:[],

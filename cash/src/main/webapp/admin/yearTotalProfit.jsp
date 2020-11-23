@@ -16,7 +16,7 @@
 	        data: {
 	           labels:[],
 	           datasets:[{
-	              label:'연도별 평균 수익(수입 - 지출)',
+	              label:'연도별 총 수익(수입 - 지출)',
 				  steppedLine: 'middle',
 				  fill : false,
 	              backgroundColor: [],

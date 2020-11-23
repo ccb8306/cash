@@ -75,7 +75,7 @@
 					datasets: [{
 						data: [],
 						backgroundColor: [],
-						label: '월별 평균 수익' // for legend
+						label: '월별 카테고리별 지출' // for legend
 					}],
 					labels: []
 				},
@@ -86,7 +86,7 @@
 					},
 					title: {
 						display: true,
-						text: '월별 평균 수익(수입 - 지출)'
+						text: '월별 카테고리별 지출'
 					},
 					scale: {
 						ticks: {

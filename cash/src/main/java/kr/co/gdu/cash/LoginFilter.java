@@ -18,7 +18,7 @@ public class LoginFilter implements Filter{
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		HttpSession session = ((HttpServletRequest)request).getSession();
 		if(session.getAttribute("loginId") == null) {
-			((HttpServletResponse)response).sendRedirect("/login");
+			((HttpServletResponse)response).sendRedirect(((HttpServletRequest)request).getContextPath() + "/login");
 			return;
 		}
 		chain.doFilter(request, response);

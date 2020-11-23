@@ -59,7 +59,7 @@
 	</div>
 	
 	<div id="addMemberBtn" class="menu-content" style="background-color:#E8D9FF; width:5%; height:20%; margin-top:10px">
-		<p class="ml-10">사&nbsp;&nbsp;추<br>용&nbsp;&nbsp;가<br>자</p>
+		<p class="ml-10">사&nbsp;&nbsp;&nbsp;추<br>용&nbsp;&nbsp;&nbsp;가<br>자</p>
 	</div>
 	
 	<div id="loginoutBtn" class="menu-content" style="background-color:#FF9966; width:5%; height:20%; margin-top:10px">

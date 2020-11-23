@@ -101,7 +101,7 @@
 		GROUP BY MONTH(cashbook_date)
 	</select>
 	
-	<!-- 연도별 최소 최대 수입 -->
+	<!-- 월별 최소 최대 수입 -->
 	<select id="selectMonthMinMaxRevenue" resultType="java.util.Map" parameterType="int">
 		SELECT 
 			MONTH(cashbook_date) month, 
@@ -110,7 +110,7 @@
 		FROM cashbook WHERE YEAR(cashbook_date) = #{year}
 		GROUP BY MONTH(cashbook_date)
 	</select>
-	<!-- 연도별 최소 최대 지출 -->
+	<!-- 월별 최소 최대 지출 -->
 	<select id="selectMonthMinMaxExpenditure" resultType="java.util.Map" parameterType="int">
 		SELECT 
 			MONTH(cashbook_date) month, 

@@ -49,6 +49,7 @@ $(document).ready(function(){
 				responsive: true,
 				title: {
 					display: true,
+					text: '월별 총 지출'
 				},
 				legend: {
 					display: false
