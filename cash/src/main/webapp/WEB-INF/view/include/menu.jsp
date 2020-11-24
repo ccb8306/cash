@@ -11,7 +11,9 @@
 		}else if('${type}' == 4){
 			$("#noticeBtn").css( 'width', '7%' );
 		}else if('${type}' == 5){
-			$("#cashStatsBtn").css( 'width', '7%' );
+			$("#addMemberBtn").css( 'width', '7%' ); //사용자 추가
+		}else{
+			$("#cashStatsBtn").css( 'width', '7%' ); //통계
 		}
 			
 		$("#homeBtn").click(function() {

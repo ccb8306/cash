@@ -12,9 +12,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import kr.co.gdu.cash.mapper.NoticeMapper;
 import kr.co.gdu.cash.service.NoticeService;
 import kr.co.gdu.cash.vo.Notice;
+import kr.co.gdu.cash.vo.NoticeForm;
 
 @Controller
 public class NoticeController {
@@ -52,8 +52,9 @@ public class NoticeController {
 	}
 	// 공지사항 추가 액션
 	@PostMapping("/admin/addNotice")
-	public String addNotice(Model model, Notice notice) {
-		noticeService.addNotice(notice);
+	public String addNotice(Model model, NoticeForm noticeForm) {
+		noticeService.addNotice(noticeForm);
+		
 		model.addAttribute("type", type);
 		return "redirect:/admin/noticeList/1";
 	}
@@ -91,8 +92,9 @@ public class NoticeController {
 	}
 	// 공지사항 수정 액션
 	@PostMapping("/admin/modifyNotice")
-	public String modifyNotice(Model model, Notice notice) {
-		noticeService.modifyNotice(notice);
-		return "redirect:/admin/noticeOne/" + notice.getNoticeId();
+	public String modifyNotice(Model model, NoticeForm noticeForm) {
+		noticeService.modifyNotice(noticeForm);
+		return "redirect:/admin/noticeOne/" + noticeForm.getNoticeId();
 	}
+	
 }
