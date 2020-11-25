@@ -22,7 +22,7 @@
 <div class="container-fluit main-content">
 	<br>
 	<div>
-		<div class="pastel-yellow-300"><h2>전체 리스트</h2></div>
+		<div class="pastel-orange-300"><h2>전체 리스트</h2></div>
 	</div>
 	<a href="${pageContext.request.contextPath}/admin/cashbookListExcel">[전체 리스트를 엑셀 파일로 다운로드]</a>
 	<div>

@@ -11,7 +11,21 @@
 <script>
 	$(document).ready(function(){
 		$('#loginBtn').click(function(){
-			$('#loginForm').submit();
+			// 비동기
+			$.ajax({
+				url: '/admin/memberCk',
+				type: 'post',
+				data: [{id:$('#id').val()},{pw:$('#pw').val()}],
+				success: function(data){
+					if(data == false){
+						alert('아이디나 비밀번호가 다릅니다.');
+						return;
+					}else{
+						$('#loginForm').submit();
+						return;
+					}
+				}
+			})	
 		})
 	})
 </script>

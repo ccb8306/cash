@@ -25,4 +25,5 @@ public class MemberService {
 	public int addMember(Member member) {
 		return memberMapper.insertMember(member);
 	}
+	
 }

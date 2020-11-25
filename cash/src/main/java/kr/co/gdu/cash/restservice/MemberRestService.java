@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import kr.co.gdu.cash.restmapper.MemberRestMapper;
+import kr.co.gdu.cash.vo.Member;
 
 @Service
 @Transactional
@@ -18,6 +19,16 @@ public class MemberRestService {
 			return false;
 		}
 		
+		return true;
+	}
+
+	// 사용자 확인
+	public boolean memberCk(Member member) {
+		int ck = memberRestMapper.selectMemberCk(member);
+		
+		if(ck == 0) {
+			return false;
+		}
 		return true;
 	}
 }

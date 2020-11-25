@@ -8,6 +8,19 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <link href="${pageContext.request.contextPath}/resources/cash.css" rel="stylesheet" type="text/css" />
+<script>
+	$(document).ready(function(){
+		// 댓글 유효성 검사
+		$('#addCommentBtn').click(function(){
+			if($('#commentContent').val().length < 1){
+				alert('내용을 입력해 주세요.');
+				return
+			}
+
+			$('#addCommentForm').submit();
+		})
+	})
+</script>
 </head>
 <body>
 <!-- 배경 -->
@@ -89,13 +102,13 @@
 	<div class="mt-50"></div>
 	<!-- 댓글 작성 -->
 	<h5>댓글 작성</h5>
-	<form method="post" action="${pageContext.request.contextPath}/admin/addNoticecomment">
+	<form id="addCommentForm" method="post" action="${pageContext.request.contextPath}/admin/addNoticecomment">
 		<input type="hidden" name="noticeId" value="${notice.noticeId}">
 		<table class="table">
 			<tr>
 				<th>내용</th>
-				<td><textarea name="commentContent" class="form-control"></textarea></td>
-				<td><button type="submit" class="btn btn-outline-dark">작성</button></td>
+				<td><textarea id="commentContent" name="commentContent" class="form-control"></textarea></td>
+				<td><button id="addCommentBtn" type="button" class="btn btn-outline-dark">작성</button></td>
 			</tr>
 		</table>
 	</form>

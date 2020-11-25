@@ -50,7 +50,7 @@
 	
 	<!-- 사용자 추가 -->
 	<div style="width:300px; margin:0 auto; margin-top:10%">
-		<div class="pastel-yellow-300"><h2>Add Member</h2></div>
+		<div class="pastel-grape-300"><h2>Add Member</h2></div>
 	</div>
 	<div class="container" style="width:50%">	
 		<form id="addMemberForm" method="post" action="${pageContext.request.contextPath}/admin/addMember">

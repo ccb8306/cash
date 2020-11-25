@@ -32,7 +32,7 @@
 		// 공지사항 작성 버튼
 		$('#addNoticeBtn').click(function(){
 			// 제목, 내용 유효성 검사
-			if($('#noticeTitle').val().lenth < 1){
+			if($('#noticeTitle').val().length < 1){
 				alert('제목을 입력해 주세요.');
 				return;
 			} else if($('#noticeContent').val().length < 1){
@@ -54,6 +54,7 @@
 			// 정상적일 때 submit
 			$('#addNoticeForm').submit();
 		})
+
 	})
 </script>
 <body>

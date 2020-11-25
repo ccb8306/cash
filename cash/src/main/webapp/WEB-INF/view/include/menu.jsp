@@ -11,9 +11,11 @@
 		}else if('${type}' == 4){
 			$("#noticeBtn").css( 'width', '7%' );
 		}else if('${type}' == 5){
-			$("#addMemberBtn").css( 'width', '7%' ); //사용자 추가
+			$("#addMemberBtn").css( 'width', '7%' ); // 사용자 추가
+		}else if('${type}' == 6){
+			$("#visitorbookBtn").css( 'width', '7%' ); // 방명록
 		}else{
-			$("#cashStatsBtn").css( 'width', '7%' ); //통계
+			$("#cashStatsBtn").css( 'width', '7%' ); // 통계
 		}
 			
 		$("#homeBtn").click(function() {
@@ -33,6 +35,9 @@
 		});
 		$("#addMemberBtn").click(function() {
 			$(location).attr('href', '${pageContext.request.contextPath}/admin/addMember')
+		});
+		$("#visitorbookBtn").click(function() {
+			$(location).attr('href', '${pageContext.request.contextPath}/admin/visitorbook/1')
 		});
 		$("#loginoutBtn").click(function() {
 			$(location).attr('href', '${pageContext.request.contextPath}/admin/logout')
@@ -62,6 +67,10 @@
 	
 	<div id="addMemberBtn" class="menu-content" style="background-color:#E8D9FF; width:5%; height:20%; margin-top:10px">
 		<p class="ml-10">사&nbsp;&nbsp;&nbsp;추<br>용&nbsp;&nbsp;&nbsp;가<br>자</p>
+	</div>
+	
+	<div id="visitorbookBtn" class="menu-content" style="background-color:#D9E5FF; width:5%; height:20%; margin-top:10px">
+		<p class="ml-10">방<br>명<br>록</p>
 	</div>
 	
 	<div id="loginoutBtn" class="menu-content" style="background-color:#FF9966; width:5%; height:20%; margin-top:10px">
