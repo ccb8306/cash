@@ -33,10 +33,10 @@
 		<form id="loginForm" method="post" action="${pageContext.request.contextPath}/login">
 			<table class="table">
 				<tr>
-					<td>ID : </td><td><input class="form-control" type="text" name="id" id="id"></td>
+					<td>ID : </td><td><input class="form-control" type="text" name="id" id="id" value="goodee"></td>
 				</tr>
 				<tr>
-					<td>PW : </td><td><input class="form-control" type="password" name="pw" id="pw"></td>
+					<td>PW : </td><td><input class="form-control" type="password" name="pw" id="pw" value="1234"></td>
 				</tr>
 				<tr>
 					<td colspan="2"><button type="button" class="btn btn-block btn-outline-warning" id="loginBtn">Login</button></td>

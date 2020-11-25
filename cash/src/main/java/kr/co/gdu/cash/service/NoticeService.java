@@ -32,8 +32,7 @@ public class NoticeService {
 	String PATH = file.getAbsolutePath() + "\\src\\main\\webapp\\upload\\";  */
 	
 	// aws에 업로드 시 사용하는 경로
-    File file = new File("");
-	String PATH = file.getAbsolutePath() + "/home/ubuntu/tomcat9/webapps/cash/upload/";  
+	String PATH = "/home/ubuntu/tomcat9/webapps/cash/upload/";  
 
 	
 	// 공지사항 최신 5개
