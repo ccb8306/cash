@@ -11,7 +11,7 @@
 		FROM visitorbook
 		ORDER BY visitorbook_date DESC
 		LIMIT #{startPage}, #{rowPage}
-	</select><select id="selectVisitorbookListEndPage" parameterType="int">
+	</select><select id="selectVisitorbookListEndPage" resultType="int">
 		SELECT 
 			COUNT(*)
 		FROM visitorbook
@@ -19,12 +19,12 @@
 	
 	<!-- 방명록 추가 -->
 	<insert id="insertVisitorbook" parameterType="kr.co.gdu.cash.vo.Visitorbook">
-		INSERT INTO visitorbook{
+		INSERT INTO visitorbook(
 			visitorbook_writer,
 			visitorbook_content,
 			visitorbook_date
-		} VALUES (
-			#{visitorbookWirter},
+		) VALUES (
+			#{visitorbookWriter},
 			#{visitorbookContent},
 			NOW()
 		)

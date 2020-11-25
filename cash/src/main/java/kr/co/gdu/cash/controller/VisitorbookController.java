@@ -24,11 +24,11 @@ public class VisitorbookController {
 	public String visitorbook(Model model,
 				@PathVariable(name="currentPage") int currentPage) {
 		
-		int rowPage = 10;
+		int rowPage = 7;
 		int endPage = visitorbookService.getVisitorbookListEndPage(rowPage);
 		
 		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("startPage", (currentPage - 1) * rowPage );
+		map.put("startPage", (int)(currentPage - 1) * rowPage );
 		map.put("rowPage", rowPage );
 		List<Visitorbook> visitorbookList = visitorbookService.getVisitorbookListByPage(map);
 		
@@ -43,7 +43,7 @@ public class VisitorbookController {
 	@PostMapping("/admin/addVisitorbook")
 	public String addVisitorbook(Visitorbook visitorbook) {
 		visitorbookService.addVisitorbook(visitorbook);
-		return "redirect:/visitorbook/1";
+		return "redirect:/admin/visitorbook/1";
 	}
 	
 	// 방명록 삭제
@@ -52,6 +52,6 @@ public class VisitorbookController {
 			@PathVariable(name="visitorbookId") int visitorbookId) {
 		
 		visitorbookService.removeVisitorbook(visitorbookId);
-		return "redirect:/visitorbook/1";
+		return "redirect:/admin/visitorbook/1";
 	}
 }

@@ -21,14 +21,16 @@ public class VisitorbookService {
 	}
 	// 방명록 최대페이지 구하기
 	public int getVisitorbookListEndPage(int rowPage) {
-		int endPage = 1;
-		
+		int endPage = visitorbookMapper.selectVisitorbookListEndPage();
+
+		System.out.println(rowPage);
 		if(endPage % rowPage == 0) {
 			endPage = (int)(endPage/rowPage);
 		}else {
 			endPage = (int)(endPage/rowPage) + 1;
+			System.out.println("+1");
 		}
-		
+		System.out.println(endPage);
 		return endPage;
 	}
 	
