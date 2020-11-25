@@ -3,7 +3,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Insert title here</title>
+<title>stats</title>
 
 <link href="${pageContext.request.contextPath}/resources/cash.css" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -22,8 +22,6 @@
 				$(data1).each(function(key, value) {
 					html += `<option value="` + value + `">`+ value +`</option>`;		
 				});
-
-				html += `</select>`;
 				$('#yearList').html(html);
 			}
 		})

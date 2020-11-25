@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>modifyCashbook</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <link href="${pageContext.request.contextPath}/resources/cash.css" rel="stylesheet" type="text/css" />
@@ -50,7 +50,7 @@
 						<select class="btn btn-outline-warning" id="cashbookKind" name="cashbookKind">
 							<c:if test="${cashbook.cashbookKind == '수입'}">
 								<option selected="selected">수입</option>
-								<option>수입</option>
+								<option>지출</option>
 							</c:if>
 							<c:if test="${cashbook.cashbookKind == '지출'}">
 								<option>수입</option>
