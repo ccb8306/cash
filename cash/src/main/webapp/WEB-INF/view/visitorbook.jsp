@@ -18,6 +18,14 @@
 				alert('내용을 입력해 주세요.');
 				return
 			}
+			
+			if($('#visitorbookWriter').val().length > 20){
+				alert('작성자는 20자 이내로 작성해 주세요.');
+				return
+			}else if($('#visitorbookContent').val().length > 80){
+				alert('내용은 80자 이내로 작성해 주세요.');
+				return
+			}
 			$('#addVisitorbookForm').submit();
 		})
 	})
@@ -25,15 +33,17 @@
 </head>
 <body>
 <!-- 배경 -->
-<div class="container-fluit main-bg">
-	<img src="${pageContext.request.contextPath}/resources/image/note.jpg" class="bg-img">
+<div class="container-fluit main-bg" id="main-bg">
+	<div><img src="${pageContext.request.contextPath}/resources/image/note1.png" class="bg-img" style="height:500px"></div>
+	<div><img src="${pageContext.request.contextPath}/resources/image/note2.png" class="bg-img" id="bg-img2" style="height:500px"></div>
+	<div><img src="${pageContext.request.contextPath}/resources/image/note3.png" class="bg-img" style="height:500px"></div>
 </div>
 <!-- 메뉴 -->
 <div class="container-fluit menu-bar">
 	<jsp:include page="/WEB-INF/view/include/menu.jsp"></jsp:include>
 </div>
 <!-- 본문 -->
-<div class="container-fluit main-content">
+<div class="container-fluit main-content" id="main-content">
 	<br>
 	<!-- 방명록 -->
 	<div>
@@ -62,8 +72,8 @@
 				<thead class="thead-light">
 					<tr>
 						<th>no.${v.visitorbookId }</th>
-						<th class="fs-20">${v.visitorbookWriter }</th>
-						<th class="align-right">Date.${v.visitorbookDate }</th>
+						<th class="fs-15">${v.visitorbookWriter }</th>
+						<th class="align-right fs-15" style="width:30%">Date.${v.visitorbookDate }</th>
 					</tr>
 				</thead>
 				<tbody>			
@@ -108,5 +118,7 @@
 		</ul>
 	</div>
 </div>
+<!-- 배경 이미지 사이즈 -->
+<script src="${pageContext.request.contextPath}/resources/cash.js"></script>
 </body>
 </html>

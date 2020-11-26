@@ -28,11 +28,11 @@ public class NoticeService {
 	@Autowired private NoticecommentMapper noticecommentMapper;
 
 	// localhost로 작업 할 때의 경로
-    /*File file = new File("");
-	String PATH = file.getAbsolutePath() + "\\src\\main\\webapp\\upload\\";  */
+    File file = new File("");
+	String PATH = file.getAbsolutePath() + "\\src\\main\\webapp\\upload\\";  
 	
 	// aws에 업로드 시 사용하는 경로
-	String PATH = "/home/ubuntu/tomcat9/webapps/cash/upload/";  
+	//String PATH = "/home/ubuntu/tomcat9/webapps/cash/upload/";  
 
 	
 	// 공지사항 최신 5개

@@ -12,9 +12,9 @@
 	</select>
 	
 	<!-- id pw 확인 -->
-	<select id="selectMemberCk" resultType="int" parameterType="kr.co.gdu.cash.vo.Member">
+	<select id="selectMemberCk" resultType="String" parameterType="kr.co.gdu.cash.vo.Member">
 		SELECT 
-			COUNT(*)
+			id 
 		FROM member
 		WHERE id=#{id} AND pw=#{pw}
 	</select>

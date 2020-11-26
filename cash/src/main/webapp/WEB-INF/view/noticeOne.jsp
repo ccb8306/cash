@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix = "fn" uri = "http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,19 +21,22 @@
 			$('#addCommentForm').submit();
 		})
 	})
+	
 </script>
 </head>
 <body>
 <!-- 배경 -->
-<div class="container-fluit main-bg">
-	<img src="${pageContext.request.contextPath}/resources/image/note.jpg" class="bg-img">
+<div class="container-fluit main-bg" id="main-bg">
+	<div><img src="${pageContext.request.contextPath}/resources/image/note1.png" class="bg-img" style="height:500px"></div>
+	<div><img src="${pageContext.request.contextPath}/resources/image/note2.png" class="bg-img" id="bg-img2" style="height:500px"></div>
+	<div><img src="${pageContext.request.contextPath}/resources/image/note3.png" class="bg-img" style="height:500px"></div>
 </div>
 <!-- 메뉴 -->
 <div class="container-fluit menu-bar">
 	<jsp:include page="/WEB-INF/view/include/menu.jsp"></jsp:include>
 </div>
 <!-- 본문 -->
-<div class="container-fluit main-content">
+<div class="container-fluit main-content" id="main-content">
 	<br>
 	<!-- 공지사항 상세보기 -->
 	<div class="pastel-cloud-300"><h3>공지사항 상세보기</h3></div>
@@ -47,7 +51,17 @@
 		</tr>
 		<tr>
 			<th>내용</th>
-			<td>${notice.noticeContent }</td>
+			<td>
+				${notice.noticeContent }
+				
+				<!-- 이미지 파일만 -->
+				<c:forEach var="nf" items="${notice.noticefileList }">		
+		     		<c:set var = "fileType" value = "${fn:substring(nf.noticefileType, 0, 5)}" />
+					<c:if test="${!empty nf.noticefileName && fileType == 'image'}">
+						<div><img src="${pageContext.request.contextPath}/upload/${nf.noticefileName}" width="800px"></div>
+					</c:if>
+				</c:forEach>
+			</td>
 		</tr>
 	</table>
 	
@@ -58,13 +72,15 @@
 				<th><h4>첨부파일</h4></th>
 			</tr>
 		</thead>
-		<c:forEach var="nf" items="${notice.noticefileList }">
-			<c:if test="${!empty nf.noticefileName }">
+		<!-- 이미지 이외에 파일만 -->
+		<c:forEach var="nf" items="${notice.noticefileList }">		
+     		<c:set var = "fileType" value = "${fn:substring(nf.noticefileType, 0, 5)}" />
+			<c:if test="${!empty nf.noticefileName && fileType != 'image'}">
 				<tr>
 					<td><a href="${pageContext.request.contextPath}/upload/${nf.noticefileName}">${nf.noticefileName }</a></td>
 				</tr>
 			</c:if>
-			<c:if test="${empty nf.noticefileName }">
+			<c:if test="${empty nf.noticefileName || fileType == 'image'}}">
 				<tr><td>첨부파일이 없습니다.</td></tr>
 			</c:if>
 		</c:forEach>
@@ -95,7 +111,7 @@
 				</tr>
 			</c:if>
 			<c:if test="${empty nc.commentContent }">
-				<tr><td>댓글이 없습니다.</td></tr>
+				<tr><td colspan="4">댓글이 없습니다.</td></tr>
 			</c:if>
 		</c:forEach>
 	</table>
@@ -113,5 +129,7 @@
 		</table>
 	</form>
 </div>
+<!-- 배경 이미지 사이즈 -->
+<script src="${pageContext.request.contextPath}/resources/cash.js"></script>
 </body>
 </html>

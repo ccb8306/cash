@@ -2,6 +2,7 @@ package kr.co.gdu.cash.restcontroller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,8 +19,11 @@ public class MemberRestController {
 		return memberRestService.isMemberId(id);
 	}
 	
-	@PostMapping("/admin/memberCk")
+	@GetMapping("/admin/memberCk")
 	public boolean memberCk(Member member) {
+		System.out.println("********************************");
+		System.out.println( member);
+		System.out.println(memberRestService.memberCk(member));
 		return memberRestService.memberCk(member);
 	}
 }

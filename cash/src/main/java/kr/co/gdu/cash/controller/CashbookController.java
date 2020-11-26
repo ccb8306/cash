@@ -177,7 +177,7 @@ public class CashbookController {
 	@GetMapping("/admin/cashbookList/{currentPage}")
 	public String cashbookList(Model model,
 			@PathVariable(name = "currentPage") int currentPage) {
-		int rowPage = 8;
+		int rowPage = 10;
 		int endPage = cashbookService.getCashbookListEndPage(rowPage);
 		
 		List<Cashbook> cashbookList = cashbookService.getCashbookListByPage(currentPage, rowPage);

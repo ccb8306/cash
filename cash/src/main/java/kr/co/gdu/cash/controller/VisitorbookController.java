@@ -24,7 +24,7 @@ public class VisitorbookController {
 	public String visitorbook(Model model,
 				@PathVariable(name="currentPage") int currentPage) {
 		
-		int rowPage = 7;
+		int rowPage = 10;
 		int endPage = visitorbookService.getVisitorbookListEndPage(rowPage);
 		
 		Map<String, Object> map = new HashMap<String, Object>();

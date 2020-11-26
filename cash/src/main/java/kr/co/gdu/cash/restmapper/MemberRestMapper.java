@@ -7,5 +7,5 @@ import kr.co.gdu.cash.vo.Member;
 @Mapper
 public interface MemberRestMapper {
 	public String selectMemberId(String id);
-	int selectMemberCk(Member member);
+	public String selectMemberCk(Member member);
 }
