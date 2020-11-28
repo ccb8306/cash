@@ -20,7 +20,7 @@
 			}
 			// 비동기
 			$.ajax({
-				url: '/admin/idCheck',
+				url: '${pageContext.request.contextPath}/admin/idCheck',
 				type: 'post',
 				data: {id:$('#id').val()},
 				success: function(data){

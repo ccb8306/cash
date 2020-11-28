@@ -11,13 +11,19 @@
 <script>
 	$(document).ready(function(){
 		$('#loginBtn').click(function(){
+			if($('#id').val().length < 1){
+				alert('아이디를 입력해 주세요.');
+				return
+			}else if($('#pw').val().length < 1){
+				alert('비밀번호를 입력해 주세요.');
+				return
+			}
 			// 비동기
 			$.ajax({
-				url: '${pageContext.request.contextPath}/admin/memberCk',
-				type: 'get',
-				data: {id:$('#id').val(), pw:$('#pw').val()},
+				url: '${pageContext.request.contextPath}/memberCk',
+				type: 'post',
+				data: {id:$('#id').val(),pw:$('#pw').val()},
 				success: function(data){
-					console.log(data);
 					if(data == false){
 						alert('아이디나 비밀번호가 다릅니다.');
 						return;

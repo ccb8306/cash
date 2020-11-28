@@ -25,7 +25,7 @@ public class MemberRestService {
 	// 사용자 확인
 	public boolean memberCk(Member member) {
 
-		if(memberRestMapper.selectMemberCk(member) != null) {
+		if(memberRestMapper.selectMemberCk(member) == null) {
 			return false;
 		}
 		return true;

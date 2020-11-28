@@ -43,11 +43,15 @@
 		});
 	});
 </script>
+<!-- 배경 이미지 사이즈 -->
+<script src="${pageContext.request.contextPath}/resources/cash.js"></script>
 </head>
 <body>
 <!-- 배경 -->
-<div class="container-fluit main-bg">
-	<img src="${pageContext.request.contextPath}/resources/image/note.jpg" class="bg-img">
+<div class="container-fluit main-bg" id="main-bg">
+	<div><img src="${pageContext.request.contextPath}/resources/image/note1.png" class="bg-img" style="height:500px"></div>
+	<div><img src="${pageContext.request.contextPath}/resources/image/note2.png" class="bg-img" id="bg-img2" style="height:500px"></div>
+	<div><img src="${pageContext.request.contextPath}/resources/image/note3.png" class="bg-img" style="height:500px"></div>
 </div>
 <!-- 메뉴 -->
 <div class="container-fluit menu-bar" id="menubar">

@@ -19,11 +19,8 @@ public class MemberRestController {
 		return memberRestService.isMemberId(id);
 	}
 	
-	@GetMapping("/admin/memberCk")
+	@PostMapping("/memberCk")
 	public boolean memberCk(Member member) {
-		System.out.println("********************************");
-		System.out.println( member);
-		System.out.println(memberRestService.memberCk(member));
 		return memberRestService.memberCk(member);
 	}
 }
